@@ -1,3 +1,10 @@
+/*
+ASSUMPTIONS
+
+    - minSdk required is 16
+
+*/
+
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -35,8 +35,8 @@ public class IntegrationTest_Login {
 
     @Test
     public void initialText_isCorrect() {
-         testMandatoryIndicatorIsCorrect(loginActivity, R.id.mandatoryUser);
-        testMandatoryIndicatorIsCorrect(loginActivity, R.id.mandatoryPassword);
+        testMandatoryIndicatorIsCorrect(R.id.mandatoryUser);
+        testMandatoryIndicatorIsCorrect(R.id.mandatoryPassword);
         confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
         confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
         confirmTextViewTextIsCorrect(R.id.textErrorMessage, "");
@@ -48,14 +48,8 @@ public class IntegrationTest_Login {
         assertTrue(viewToTest.getText().toString().equals(requiredText));
     }
 
-    // separate method so we could (potentially) make generic for testing any activity
-    private void confirmTextViewTextIsCorrect(LoginActivity activityToTest, int viewId, String requiredText) {
-        TextView viewToTest = activityToTest.findViewById(viewId);
-        assertTrue(viewToTest.getText().toString().equals(requiredText));
-    }
-
-    private void testMandatoryIndicatorIsCorrect(Activity activityToTest, int indicatorViewId) {
-        TextView viewToTest = activityToTest.findViewById(indicatorViewId);
+    private void testMandatoryIndicatorIsCorrect(int indicatorViewId) {
+        TextView viewToTest = loginActivity.findViewById(indicatorViewId);
         assertEquals(viewToTest.getCurrentTextColor(), Color.RED);
         assertTrue(viewToTest.getText().toString().equals("*"));
     }

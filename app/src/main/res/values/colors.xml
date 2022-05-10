@@ -9,5 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- define red as the colour for the mandatory indicators (asterix) -->
-    --><color name="mandatory_indicator">#FFFF0000</color>
+    --><color name="mandatory_and_error_indicator">#FFFF0000</color>
 </resources>

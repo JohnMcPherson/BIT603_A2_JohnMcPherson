@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/mandatory_indicator"
-        android:textColor="@color/mandatory_indicator"
+        android:textColor="@color/mandatory_and_error_indicator"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTexttUserName"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,7 +44,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/mandatory_indicator"
-        android:textColor="@color/mandatory_indicator"
+        android:textColor="@color/mandatory_and_error_indicator"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextPassword"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -86,6 +86,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:textColor="@color/mandatory_and_error_indicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/barrierLabels"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />

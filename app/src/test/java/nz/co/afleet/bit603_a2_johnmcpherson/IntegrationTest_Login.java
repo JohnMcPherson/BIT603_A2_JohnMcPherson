@@ -39,8 +39,8 @@ public class IntegrationTest_Login {
         testMandatoryIndicatorIsCorrect(R.id.mandatoryPassword);
         confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
         confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
-        confirmTextViewTextIsCorrect(R.id.textErrorMessage, "");
         confirmTextViewTextIsCorrect(R.id.buttonLogin, "Login");
+        confirmErrorMessage("");
      }
 
     private void confirmTextViewTextIsCorrect(int viewId, String requiredText) {

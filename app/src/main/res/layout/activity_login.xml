@@ -14,7 +14,7 @@
         android:layout_marginLeft="16dp"
         android:text="@string/mandatory_indicator"
         android:textColor="@color/mandatory_and_error_indicator"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTexttUserName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextUserName"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -22,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="User"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTexttUserName"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextUserName"
         app:layout_constraintStart_toEndOf="@+id/mandatoryUser" />
 
     <EditText
-        android:id="@+id/editTexttUserName"
+        android:id="@+id/editTextUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -66,7 +66,7 @@
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintStart_toEndOf="@id/barrierLabels"
-        app:layout_constraintTop_toBottomOf="@+id/editTexttUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUserName" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierLabels"

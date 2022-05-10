@@ -24,11 +24,13 @@ import static org.junit.Assert.assertTrue;
 public class IntegrationTest_Login {
     private LoginActivity loginActivity;
     private TextView userName;
+    private TextView password;
 
     @Before
     public void setupLoginActivity() {
         loginActivity = Robolectric.setupActivity(LoginActivity.class);
-        userName = loginActivity.findViewById(R.id.editTexttUserName);
+        userName = loginActivity.findViewById(R.id.editTextUserName);
+        password = loginActivity.findViewById(R.id.editTextPassword);
     }
 
     @Test
@@ -64,12 +66,22 @@ public class IntegrationTest_Login {
         Button loginButton = loginActivity.findViewById(R.id.buttonLogin);
         //simulate a click and check initial error message
         loginButton.callOnClick();
-        confirmErrorMessage("Please Enter: User and Password");
+        confirmErrorMessage("Please enter your User Name and Password");
 
-        //enter a user name
+        //enter a user name and check missing password message
         userName.setText("Test User");
+        loginButton.callOnClick();
+        confirmErrorMessage("Please enter your Password");
 
-        confirmErrorMessage("Please Enter your password");
+        //enter a user name and check missing password message
+        password.setText("junkpassword");
+        loginButton.callOnClick();
+        confirmErrorMessage("");
+
+        // clear the user name and check missing user name message
+        userName.setText("");
+        loginButton.callOnClick();
+        confirmErrorMessage("Please enter your User Name");
     }
 
     private void confirmErrorMessage(String requiredText) {

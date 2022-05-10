@@ -44,10 +44,12 @@ public class IntegrationTest_Login {
      }
 
     private void confirmTextViewTextIsCorrect(int viewId, String requiredText) {
-        confirmTextViewTextIsCorrect(loginActivity, viewId, requiredText);
+        TextView viewToTest = loginActivity.findViewById(viewId);
+        assertTrue(viewToTest.getText().toString().equals(requiredText));
     }
 
-     private void confirmTextViewTextIsCorrect(LoginActivity activityToTest, int viewId, String requiredText) {
+    // separate method so we could (potentially) make generic for testing any activity
+    private void confirmTextViewTextIsCorrect(LoginActivity activityToTest, int viewId, String requiredText) {
         TextView viewToTest = activityToTest.findViewById(viewId);
         assertTrue(viewToTest.getText().toString().equals(requiredText));
     }

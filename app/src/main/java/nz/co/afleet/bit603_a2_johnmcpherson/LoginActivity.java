@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private String determineErrorMessage() {
+        // TODO split messages, and move to string values
         if (editTextUserName.getText().toString().equals("")) {
             if (editTextPassword.getText().toString().equals("")) {
                 return "Please enter your User Name and Password";

@@ -30,8 +30,7 @@ public class User {
     }
 
     public static User findUser(String user) {
-         // return users.get(user);
-         return null;
+        return users.get(user);
     }
 
     public User(String user, String password, String favouriteColour, int colourCode) {

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BIT603_A2_JohnMcPherson">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BIT603_A2_JohnMcPherson</string>
+    <string name="mandatory_indicator">*</string>
 </resources>

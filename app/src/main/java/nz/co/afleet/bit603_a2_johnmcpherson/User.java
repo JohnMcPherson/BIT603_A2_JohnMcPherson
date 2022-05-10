@@ -1,5 +1,6 @@
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
+import android.app.Application;
 import android.graphics.Color;
 
 import java.util.HashMap;

@@ -26,4 +26,18 @@ public class UnitTest_User {
         assertTrue(FAVOURITE_COLOUR.equals(testUser.getFavouriteColour()));
         assertEquals(COLOUR_CODE, testUser.getColourCode());
     }
+
+    @Test
+    public void checkSelectedUserIsCorrect() {
+        String selectedUser = "Trini";
+        String password = "Tiger";
+        String favouriteColour = "Yellow";
+        int colourCode = Color.YELLOW;
+
+        User foundUser = User.findUser(selectedUser);
+        assertTrue(foundUser.getUser().equals(selectedUser));
+        assertTrue(foundUser.getPassword().equals(password));
+        assertTrue(foundUser.getFavouriteColour().equals(favouriteColour));
+        assertEquals(foundUser.getColourCode(), colourCode);
+    }
 }

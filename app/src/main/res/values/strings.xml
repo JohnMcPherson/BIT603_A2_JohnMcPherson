@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">BIT603_A2_JohnMcPherson</string>
     <string name="mandatory_indicator">*</string>
+    <string name="user_label">User</string>
+    <string name="password_label">Password</string>
+    <string name="login_button_label">Login</string>
 </resources>

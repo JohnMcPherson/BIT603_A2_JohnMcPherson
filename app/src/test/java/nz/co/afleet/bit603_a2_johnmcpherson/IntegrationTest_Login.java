@@ -27,7 +27,8 @@ public class IntegrationTest_Login {
         testMandatoryIndicatorIsCorrect(loginActivity, R.id.mandatoryPassword);
         testLabelIsCorrect(loginActivity, R.id.textUserLabel, "User");
         testLabelIsCorrect(loginActivity, R.id.textPasswordLabel, "Password");
-    }
+        testLabelIsCorrect(loginActivity, R.id.buttonLogin, "Login");
+     }
 
     private void testLabelIsCorrect(LoginActivity activityToTest, int viewId, String requiredText) {
         TextView viewToTest = activityToTest.findViewById(viewId);

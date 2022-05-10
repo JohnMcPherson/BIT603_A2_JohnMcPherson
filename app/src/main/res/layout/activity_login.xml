@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Login"
+        android:text="@string/mandatory_indicator"
         app:layout_constraintTop_toBottomOf="@+id/textErrorMessage"
         tools:layout_editor_absoluteX="190dp" />
 

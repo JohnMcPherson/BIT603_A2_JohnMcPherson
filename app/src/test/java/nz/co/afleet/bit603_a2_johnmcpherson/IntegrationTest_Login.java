@@ -8,8 +8,10 @@ package nz.co.afleet.bit603_a2_johnmcpherson;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.widget.Button;
 import android.widget.TextView;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
@@ -20,17 +22,28 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntegrationTest_Login {
+    private LoginActivity loginActivity;
+
+    @Before
+    public void setupLoginActivity() {
+        loginActivity = Robolectric.setupActivity(LoginActivity.class);
+    }
+
     @Test
-    public void labels_areCorrect() {
-        LoginActivity loginActivity = Robolectric.setupActivity(LoginActivity.class);
-        testMandatoryIndicatorIsCorrect(loginActivity, R.id.mandatoryUser);
+    public void initialText_isCorrect() {
+         testMandatoryIndicatorIsCorrect(loginActivity, R.id.mandatoryUser);
         testMandatoryIndicatorIsCorrect(loginActivity, R.id.mandatoryPassword);
-        testLabelIsCorrect(loginActivity, R.id.textUserLabel, "User");
-        testLabelIsCorrect(loginActivity, R.id.textPasswordLabel, "Password");
-        testLabelIsCorrect(loginActivity, R.id.buttonLogin, "Login");
+        confirmTextViewTextIsCorrect(R.id.textUserLabel, "User");
+        confirmTextViewTextIsCorrect(R.id.textPasswordLabel, "Password");
+        confirmTextViewTextIsCorrect(R.id.textErrorMessage, "");
+        confirmTextViewTextIsCorrect(R.id.buttonLogin, "Login");
      }
 
-    private void testLabelIsCorrect(LoginActivity activityToTest, int viewId, String requiredText) {
+    private void confirmTextViewTextIsCorrect(int viewId, String requiredText) {
+        confirmTextViewTextIsCorrect(loginActivity, viewId, requiredText);
+    }
+
+     private void confirmTextViewTextIsCorrect(LoginActivity activityToTest, int viewId, String requiredText) {
         TextView viewToTest = activityToTest.findViewById(viewId);
         assertTrue(viewToTest.getText().toString().equals(requiredText));
     }
@@ -40,4 +53,21 @@ public class IntegrationTest_Login {
         assertEquals(viewToTest.getCurrentTextColor(), Color.RED);
         assertTrue(viewToTest.getText().toString().equals("*"));
     }
+
+    @Test
+    public void errorMessages_areCorrect() {
+        // check our starting point
+        confirmErrorMessage("");
+
+        Button loginButton = loginActivity.findViewById(R.id.buttonLogin);
+        //simulate a click
+        loginButton.callOnClick();
+
+        confirmErrorMessage("Please Enter: User and Password");
+    }
+
+    private void confirmErrorMessage(String requiredText) {
+        confirmTextViewTextIsCorrect(R.id.textErrorMessage, requiredText);
+    }
+
 }

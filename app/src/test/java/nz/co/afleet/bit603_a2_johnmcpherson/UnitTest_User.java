@@ -21,7 +21,7 @@ public class UnitTest_User {
         int COLOUR_CODE = Color.RED;
 
         User testUser = new User(USER_NAME, PASSWORD, FAVOURITE_COLOUR, COLOUR_CODE);
-        assertTrue(USER_NAME.equals(testUser.getUser()));
+        assertTrue(USER_NAME.equals(testUser.getUserName()));
         assertTrue(PASSWORD.equals(testUser.getPassword()));
         assertTrue(FAVOURITE_COLOUR.equals(testUser.getFavouriteColour()));
         assertEquals(COLOUR_CODE, testUser.getColourCode());
@@ -34,8 +34,8 @@ public class UnitTest_User {
         String favouriteColour = "Yellow";
         int colourCode = Color.YELLOW;
 
-        User foundUser = User.findUser(selectedUser);
-        assertTrue(foundUser.getUser().equals(selectedUser));
+        User foundUser = User.find(selectedUser);
+        assertTrue(foundUser.getUserName().equals(selectedUser));
         assertTrue(foundUser.getPassword().equals(password));
         assertTrue(foundUser.getFavouriteColour().equals(favouriteColour));
         assertEquals(foundUser.getColourCode(), colourCode);

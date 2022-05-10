@@ -1,14 +1,16 @@
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
-import android.graphics.Color;
-
 public class User {
     private String user;
     private String password;
     private String favouriteColour;
-    private Color colourCode;
+    private int colourCode;
 
-    public User(String jason, String sword, String favoriteColour, int colourCode) {
+    public User(String user, String password, String favouriteColour, int colourCode) {
+        this.user = user;
+        this.password = password;
+        this.favouriteColour = favouriteColour;
+        this.colourCode = colourCode;
     }
 
     public String getUser() {
@@ -35,11 +37,11 @@ public class User {
         this.favouriteColour = favouriteColour;
     }
 
-    public Color getColourCode() {
+    public int getColourCode() {
         return colourCode;
     }
 
-    public void setColourCode(Color colourCode) {
+    public void setColourCode(int colourCode) {
         this.colourCode = colourCode;
     }
 }

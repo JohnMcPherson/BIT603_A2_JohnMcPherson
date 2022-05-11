@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import nz.co.afleet.bit603_a2_johnmcpherson.InventoryFragmentPlaceholder;
+import nz.co.afleet.bit603_a2_johnmcpherson.LogoutFragment;
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 
 /**
@@ -17,7 +19,7 @@ import nz.co.afleet.bit603_a2_johnmcpherson.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_logout, R.string.tab_text_inventory};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -29,7 +31,16 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+
+        // John...
+        // I replaced the boiler plate code to return the fragment created by us
+        switch (position) {
+            case 0: return new LogoutFragment();
+            // break not required because we have used return
+            case 1: return new InventoryFragmentPlaceholder();
+
+            default: return null; // shouldn't happen
+         }
     }
 
     @Nullable
@@ -40,7 +51,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
+        // Show the number of pages we expect
         return 2;
     }
 }

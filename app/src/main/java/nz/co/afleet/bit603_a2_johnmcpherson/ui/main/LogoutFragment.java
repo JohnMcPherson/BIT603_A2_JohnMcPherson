@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import nz.co.afleet.bit603_a2_johnmcpherson.R;
 
 public class LogoutFragment extends Fragment {
     @Nullable

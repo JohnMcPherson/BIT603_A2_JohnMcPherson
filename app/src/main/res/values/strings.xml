@@ -10,4 +10,7 @@
     <string name="and">and</string>
     <string name="inventory_menu_header">Inventory</string>
     <string name="tab_header_inventory">Inventory</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

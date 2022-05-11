@@ -7,6 +7,7 @@ ASSUMPTIONS
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.widget.Button;
 import android.widget.TextView;

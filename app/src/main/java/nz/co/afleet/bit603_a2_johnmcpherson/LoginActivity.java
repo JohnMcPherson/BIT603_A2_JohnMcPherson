@@ -22,10 +22,14 @@ public class LoginActivity extends AppCompatActivity {
 
         Button loginButton = findViewById(R.id.buttonLogin);
         loginButton.setOnClickListener(v -> {
-            String stringErrorMessage = determineErrorMessage();
-            textViewErrorMessage.setText(stringErrorMessage);
-            if (stringErrorMessage.equals("")) {
+            boolean hasUserName = !editTextUserName.getText().toString().isEmpty();
+            boolean hasPassword = !editTextPassword.getText().toString().isEmpty();
+            if (hasUserName && hasPassword) {
+                textViewErrorMessage.setText("");
                 launchMainActivity();
+            } else {
+                String stringErrorMessage = determineErrorMessage(hasUserName, hasPassword);
+                textViewErrorMessage.setText(stringErrorMessage);
             }
         });
     }
@@ -35,25 +39,17 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private String determineErrorMessage() {
-        // TODO split messages, and move to string values
-        if (editTextUserName.getText().toString().equals("")) {
-            if (editTextPassword.getText().toString().equals("")) {
-                return getString(R.string.login_error_header)
-                        + " " + getString(R.string.login_error_user_name)
-                        + " " + getString(R.string.and)
-                        + " " + "Password";
-            } else {
-                return getString(R.string.login_error_header)
-                        + " " + getString(R.string.login_error_user_name);
+    private String determineErrorMessage(boolean hasUserName, boolean hasPassword) {
+        String errorMessage = getString(R.string.login_error_header) + " ";
+        if (!hasUserName) {
+            errorMessage += getString(R.string.login_error_user_name);
+            if (!hasPassword) {
+                errorMessage += (" " + getString(R.string.and) + " " + getString(R.string.login_error_password));
             }
         } else {
-            if (editTextPassword.getText().toString().equals("")) {
-                return getString(R.string.login_error_header)
-                        + " " + getString(R.string.login_error_password);
-            } else {
-                return "";
-            }
+            // we don't need to check hasPassword. The method should not have been called if userName and Password are both empty
+            errorMessage += (getString(R.string.login_error_password));
         }
+        return errorMessage;
     }
 }

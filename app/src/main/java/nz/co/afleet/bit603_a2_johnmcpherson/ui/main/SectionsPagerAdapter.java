@@ -49,7 +49,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        // Show the number of pages we expect
+        // Show the number of pages we expectj
         return 2;
     }
 }

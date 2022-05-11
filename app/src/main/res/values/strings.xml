@@ -8,4 +8,6 @@
     <string name="login_error_user_name">User Name</string>
     <string name="login_error_password">Password</string>
     <string name="and">and</string>
+    <string name="inventory_menu_header">Inventory</string>
+    <string name="tab_header_inventory">Inventory</string>
 </resources>

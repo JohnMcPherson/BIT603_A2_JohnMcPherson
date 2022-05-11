@@ -16,17 +16,27 @@ public class User {
 
     // declasre and initialise user list
     private static final HashMap<String, User> users = new HashMap<>();
+
     static {
+        loadUsers();
+    }
+
+    private static void loadUsers() {
         addUser("Jason", "Sword", "Red", Color.RED);
         addUser("Billy", "Dinosaur", "Blue", Color.BLUE);
         addUser("Zack", "Elephant", "Black", Color.BLACK);
         addUser("Trini", "Tiger", "Yellow", Color.YELLOW);
-        addUser("Kimberley", "Bird", "Pink", COLOUR_PINK);
+        addUser("Kimberly", "Bird", "Pink", COLOUR_PINK);
     }
 
     private static void addUser(String userName, String password, String favouriteColour, int colourCode) {
         User newUser = new User(userName, password, favouriteColour, colourCode);
         users.put(userName, newUser);
+    }
+
+    // used only for testing
+    public static HashMap<String, User> getAllUsers() {
+        return users;
     }
 
     // find a User, based on userName

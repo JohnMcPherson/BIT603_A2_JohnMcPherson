@@ -4,7 +4,14 @@ import android.graphics.Color;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -28,7 +35,26 @@ public class UnitTest_User {
     }
 
     @Test
-    public void checkSelectedUserIsCorrect() {
+    public void checkUsersLoaded() {
+        checkNumberOfUsers();
+        checkUsersExist();
+        checkSelectedUserIsCorrect();
+    }
+
+    private void checkNumberOfUsers() {
+        int numUsers = User.getAllUsers().size();
+        assertEquals(numUsers, 5);
+    }
+
+    private void checkUsersExist() {
+        List<String> expectedUsers = Arrays.asList("Jason", "Billy", "Zack", "Trini", "Kimberly");
+        HashMap<String, User> users = User.getAllUsers();
+        for (String expectedUser : expectedUsers) {
+            assertTrue(users.containsKey(expectedUser));
+        }
+    }
+
+    private void checkSelectedUserIsCorrect() {
         String selectedUser = "Trini";
         String password = "Tiger";
         String favouriteColour = "Yellow";

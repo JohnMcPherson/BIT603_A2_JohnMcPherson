@@ -4,4 +4,8 @@
     <string name="user_label">User</string>
     <string name="password_label">Password</string>
     <string name="login_button_label">Login</string>
+    <string name="login_error_header">Please enter your</string>
+    <string name="login_error_user_name">User Name</string>
+    <string name="login_error_password">Password</string>
+    <string name="and">and</string>
 </resources>

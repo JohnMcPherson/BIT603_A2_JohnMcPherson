@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BIT603_A2_JohnMcPherson</string>
+    <string name="app_name">Kiwi Cookies and Cakes - Inventory</string>
     <string name="mandatory_indicator">*</string>
     <string name="user_label">User</string>
     <string name="password_label">Password</string>

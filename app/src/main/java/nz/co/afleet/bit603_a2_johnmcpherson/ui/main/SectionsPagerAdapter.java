@@ -36,7 +36,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // John...
         // I replaced the boiler plate code to return the fragment created by us
         switch (position) {
-            case 0: return new LogoutFragment();
+            case 0: return new WelcomeFragment();
             // break not required because we have used return
             case 1: return new InventoryFragment();
 

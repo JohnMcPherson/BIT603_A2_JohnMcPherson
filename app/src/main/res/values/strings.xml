@@ -12,4 +12,5 @@
     <string name="tab_text_logout">Logout</string>
     <string name="tab_text_inventory">Inventory</string>
     <string name="logout">Logout</string>
+    <string name="welcome_message_header">Welcome</string>
 </resources>

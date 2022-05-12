@@ -1,3 +1,18 @@
+/*
+ASSUMPTIONS
+    -   I used the Google/Android material.io documentation to design the wireframes. Tabs and a list seemed the
+        best solutions for navigation and the inventory list.
+
+        When I researched how to build it, I found that AndroidStudio generated the heart of what I needed
+        -   new Activity/Tabbed Activity
+        -   new Fragment/ Fragment (list)
+        -   As a bonus, the generated Tabbed Activity included a FloatingActionButton, which looked better than
+            what I had designed in the wireframe mockup. So, I modified it and used it
+
+        I have assumed it is OK to let the framework do the heavy lifting (generating), and for me to understand it,
+         modify and adapt, to create a modern looking app.
+*/
+
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
 import android.os.Bundle;

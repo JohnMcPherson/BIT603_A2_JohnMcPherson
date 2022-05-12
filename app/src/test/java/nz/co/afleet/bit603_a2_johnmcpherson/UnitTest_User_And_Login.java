@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class UnitTest_User {
+public class UnitTest_User_And_Login {
     @Test
     public void userCreateRead_isCorrect() {
         String USER_NAME = "Jason";
@@ -89,10 +89,31 @@ public class UnitTest_User {
     public void testLoginSuccess() {
         String nameOfTestUser = "Jason";
         boolean loginSuccessful = User.loginUser(nameOfTestUser, "Sword");
+        // check that the login method is indicating success
         assertTrue(loginSuccessful);
         User loggedInUser = User.getLoggedInUser();
+        // check that somebody is logged in
         assertNotEquals(loggedInUser, null);
+        // check that it is the right person
         assertEquals(loggedInUser, User.find(nameOfTestUser));
+    }
+
+    @Test
+    public void testLoginUserNameFail() {
+        //start by logging in a user
+        testLoginSuccess();
+        // and checking we have a logged in user
+        assertNotEquals(User.getLoggedInUser(), null);
+
+        // try to log in with user name that does not exist
+        String nameOfTestUser = "Faker";
+        boolean loginSuccessful = User.loginUser(nameOfTestUser, "Sword");
+        // check that the login method is indicating failure
+        assertFalse(loginSuccessful);
+
+        // check that Jason has been logged out (due to our unsuccessful login attempt)
+        User loggedInUser = User.getLoggedInUser();
+        assertNull(loggedInUser);
     }
 
     @Test
@@ -105,11 +126,11 @@ public class UnitTest_User {
         // try to log in with a wrong password
         String nameOfTestUser = "Jason";
         boolean loginSuccessful = User.loginUser(nameOfTestUser, "wrongPassword");
+        // check that the login method is indicating failure
         assertFalse(loginSuccessful);
 
         // check that Jason has been logged out (due to our unsuccessful login attempt)
         User loggedInUser = User.getLoggedInUser();
         assertNull(loggedInUser);
     }
-
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import nz.co.afleet.bit603_a2_johnmcpherson.InventoryFragment;
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 
 /**
@@ -35,7 +36,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         switch (position) {
             case 0: return new LogoutFragment();
             // break not required because we have used return
-            case 1: return new InventoryFragmentPlaceholder();
+            case 1: return new InventoryFragment();
 
             default: return null; // shouldn't happen
          }

@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
+package nz.co.afleet.bit603_a2_johnmcpherson;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

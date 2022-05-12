@@ -66,4 +66,19 @@ public class UnitTest_User {
         assertTrue(foundUser.getFavouriteColour().equals(favouriteColour));
         assertEquals(foundUser.getColourCode(), colourCode);
     }
+
+    @Test
+    public void testAddUser() {
+        String userName = "Harry";
+        String password = "Fox";
+        String favouriteColour = "Blue";
+        int colourCode = Color.BLUE;
+
+        User.addUser(userName, password, favouriteColour, colourCode);
+        User newUser = User.getAllUsers().get(userName);
+        assertTrue(newUser.getUserName().equals(userName));
+        assertTrue(newUser.getPassword().equals(password));
+        assertTrue(newUser.getFavouriteColour().equals(favouriteColour));
+        assertEquals(newUser.getColourCode(), colourCode);
+    }
 }

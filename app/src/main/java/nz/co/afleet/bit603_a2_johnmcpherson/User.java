@@ -29,7 +29,10 @@ public class User {
         addUser("Kimberly", "Bird", "Pink", COLOUR_PINK);
     }
 
-    private static void addUser(String userName, String password, String favouriteColour, int colourCode) {
+    // There is no current requirement for this to be public, because addUser is only used by the loadUsers method
+    // But, for a real world app, we would soon want to provide UI capability to add users.
+    // And, making it public makes it easy to unit test.
+    public static void addUser(String userName, String password, String favouriteColour, int colourCode) {
         User newUser = new User(userName, password, favouriteColour, colourCode);
         users.put(userName, newUser);
     }

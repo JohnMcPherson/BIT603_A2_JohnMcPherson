@@ -77,6 +77,8 @@ public class UnitTest_User_And_Login {
         int colourCode = Color.BLUE;
 
         User.addUser(userName, password, favouriteColour, colourCode);
+
+        // confirm that the user was added
         User newUser = User.getAllUsers().get(userName);
         assertTrue(newUser.getUserName().equals(userName));
         assertTrue(newUser.getPassword().equals(password));

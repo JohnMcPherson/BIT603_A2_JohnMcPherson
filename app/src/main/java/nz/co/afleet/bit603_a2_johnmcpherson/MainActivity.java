@@ -50,18 +50,5 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
-
-        // A floating action button came "free" when I created a new TabbedActivity (using the AndroidStudio wizard)
-        // As this looked perfect for adding a new Inventory Item, I decided to use it
-/*
-        FloatingActionButton fab = binding.fab;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-*/
     }
 }

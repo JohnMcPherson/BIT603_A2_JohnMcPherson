@@ -1,6 +1,5 @@
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
-import android.app.Application;
 import android.graphics.Color;
 
 import java.util.HashMap;
@@ -16,7 +15,7 @@ public class User {
     // COLOUR_PINK made public in case we want to test it, or access it externally for another reason
     public final static int COLOUR_PINK = 0xFFFF8080;
 
-    // declasre and initialise user list
+    // declare and initialise user list
     private static final HashMap<String, User> users = new HashMap<>();
 
     static {

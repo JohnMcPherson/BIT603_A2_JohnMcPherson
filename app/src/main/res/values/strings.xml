@@ -9,7 +9,7 @@
     <string name="login_error_password">Password</string>
     <string name="and">and</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="tab_text_logout">Logout</string>
+    <string name="tab_welcome_header">Welcome</string>
     <string name="tab_text_inventory">Inventory</string>
     <string name="logout">Logout</string>
     <string name="welcome_message_header">Welcome</string>

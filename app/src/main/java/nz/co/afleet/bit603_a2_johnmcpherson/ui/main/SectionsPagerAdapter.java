@@ -9,8 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
-import nz.co.afleet.bit603_a2_johnmcpherson.ui.main.InventoryFragment;
-import nz.co.afleet.bit603_a2_johnmcpherson.ui.main.WelcomeFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -21,7 +19,7 @@ import nz.co.afleet.bit603_a2_johnmcpherson.ui.main.WelcomeFragment;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_logout, R.string.tab_text_inventory};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_welcome_header, R.string.tab_text_inventory};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {

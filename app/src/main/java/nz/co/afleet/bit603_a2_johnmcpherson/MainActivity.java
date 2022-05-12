@@ -11,6 +11,9 @@ ASSUMPTIONS
 
         I have assumed it is OK to let the framework do the heavy lifting (generating), and for me to understand it,
          modify and adapt, to create a modern looking app.
+
+    -   The generated Activity uses bindings (to access views). I have used these before, so continued to use them.
+        I have assumed it is OK to use techniques that have evolved since the course was written.
 */
 
 package nz.co.afleet.bit603_a2_johnmcpherson;

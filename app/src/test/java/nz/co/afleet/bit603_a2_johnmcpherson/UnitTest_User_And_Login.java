@@ -4,10 +4,8 @@ import android.graphics.Color;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -88,7 +86,7 @@ public class UnitTest_User_And_Login {
 
 
     @Test
-    public void testLoginSuccess() {
+    public void testForSuccessfulLogin() {
         String nameOfTestUser = "Jason";
         boolean loginSuccessful = User.loginUser(nameOfTestUser, "Sword");
         // check that the login method is indicating success
@@ -103,7 +101,7 @@ public class UnitTest_User_And_Login {
     @Test
     public void testLoginUserNameFail() {
         //start by logging in a user
-        testLoginSuccess();
+        testForSuccessfulLogin();
         // and checking we have a logged in user
         assertNotEquals(User.getLoggedInUser(), null);
 
@@ -120,18 +118,18 @@ public class UnitTest_User_And_Login {
 
     @Test
     public void testLoginPasswordFail() {
-        //start by logging in a user
-        testLoginSuccess();
+        //start by logging in a user (Jason)
+        testForSuccessfulLogin();
         // and checking we have a logged in user
         assertNotEquals(User.getLoggedInUser(), null);
 
         // try to log in with a wrong password
         String nameOfTestUser = "Jason";
         boolean loginSuccessful = User.loginUser(nameOfTestUser, "wrongPassword");
-        // check that the login method is indicating failure
+        // check that the login method indicated failure
         assertFalse(loginSuccessful);
 
-        // check that Jason has been logged out (due to our unsuccessful login attempt)
+        // check that the previous user (logged in, with testLoginSuccess) has been logged out (due to our unsuccessful login attempt)
         User loggedInUser = User.getLoggedInUser();
         assertNull(loggedInUser);
     }

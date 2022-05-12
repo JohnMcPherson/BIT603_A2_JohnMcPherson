@@ -16,7 +16,7 @@ ASSUMPTIONS
         I have assumed it is OK to use techniques that have evolved since the course was written.
 */
 
-package nz.co.afleet.bit603_a2_johnmcpherson;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 import android.os.Bundle;
 

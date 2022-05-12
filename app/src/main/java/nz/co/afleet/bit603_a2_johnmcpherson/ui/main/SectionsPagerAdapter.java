@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 import android.content.Context;
 
@@ -7,6 +7,10 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import nz.co.afleet.bit603_a2_johnmcpherson.R;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.main.InventoryFragment;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.main.WelcomeFragment;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to

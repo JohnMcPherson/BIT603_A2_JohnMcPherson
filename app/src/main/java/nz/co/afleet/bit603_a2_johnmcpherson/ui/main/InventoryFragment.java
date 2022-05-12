@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.placeholder.PlaceholderContent;
 
 /**

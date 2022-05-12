@@ -6,8 +6,6 @@ ASSUMPTIONS
 
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,6 +15,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.login.LoginActivity;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

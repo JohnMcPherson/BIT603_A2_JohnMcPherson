@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
+import nz.co.afleet.bit603_a2_johnmcpherson.R;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.main.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
     TextView editTextUserName;

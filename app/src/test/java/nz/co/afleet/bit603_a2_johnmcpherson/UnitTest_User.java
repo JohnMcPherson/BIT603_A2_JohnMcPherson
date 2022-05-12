@@ -12,6 +12,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
@@ -81,4 +83,33 @@ public class UnitTest_User {
         assertTrue(newUser.getFavouriteColour().equals(favouriteColour));
         assertEquals(newUser.getColourCode(), colourCode);
     }
+
+
+    @Test
+    public void testLoginSuccess() {
+        String nameOfTestUser = "Jason";
+        boolean loginSuccessful = User.loginUser(nameOfTestUser, "Sword");
+        assertTrue(loginSuccessful);
+        User loggedInUser = User.getLoggedInUser();
+        assertNotEquals(loggedInUser, null);
+        assertEquals(loggedInUser, User.find(nameOfTestUser));
+    }
+
+    @Test
+    public void testLoginPasswordFail() {
+        //start by logging in a user
+        testLoginSuccess();
+        // and checking we have a logged in user
+        assertNotEquals(User.getLoggedInUser(), null);
+
+        // try to log in with a wrong password
+        String nameOfTestUser = "Jason";
+        boolean loginSuccessful = User.loginUser(nameOfTestUser, "wrongPassword");
+        assertFalse(loginSuccessful);
+
+        // check that Jason has been logged out (due to our unsuccessful login attempt)
+        User loggedInUser = User.getLoggedInUser();
+        assertNull(loggedInUser);
+    }
+
 }

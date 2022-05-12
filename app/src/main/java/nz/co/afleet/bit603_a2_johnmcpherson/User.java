@@ -11,6 +11,8 @@ public class User {
     private String favouriteColour;
     private int colourCode;
 
+    private static User loggedInUser;
+
     // COLOUR_PINK made public in case we want to test it, or access it externally for another reason
     public final static int COLOUR_PINK = 0xFFFF8080;
 
@@ -37,7 +39,8 @@ public class User {
         users.put(userName, newUser);
     }
 
-    // used only for testing
+    // Made public to allow easy unit testing
+    // But likely to be required (as public) for future development
     public static HashMap<String, User> getAllUsers() {
         return users;
     }
@@ -45,6 +48,22 @@ public class User {
     // find a User, based on userName
     public static User find(String userName) {
         return users.get(userName);
+    }
+
+    public static boolean loginUser(String userName, String password) {
+        loggedInUser = null; // if we are trying to log in, we want to ensure that any existing users are logged out
+        User user = find(userName);
+        if (user == null) return false;
+        if (user.getPassword().equals(password)) {
+            loggedInUser = user;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static User getLoggedInUser() {
+        return loggedInUser;
     }
 
     public User(String userName, String password, String favouriteColour, int colourCode) {

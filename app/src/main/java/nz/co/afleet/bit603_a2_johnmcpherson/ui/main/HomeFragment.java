@@ -19,7 +19,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_welcome, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
         TextView textViewWelcomeMessage = view.findViewById(R.id.textViewWelcomeMessage);
         String stringWelcomeMessage = getContext().getString(R.string.welcome_message_header);
         textViewWelcomeMessage.setText(stringWelcomeMessage);

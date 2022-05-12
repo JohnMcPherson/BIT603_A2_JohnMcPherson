@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         // A floating action button came "free" when I created a new TabbedActivity (using the AndroidStudio wizard)
         // As this looked perfect for adding a new Inventory Item, I decided to use it
+/*
         FloatingActionButton fab = binding.fab;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +62,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+*/
     }
 }

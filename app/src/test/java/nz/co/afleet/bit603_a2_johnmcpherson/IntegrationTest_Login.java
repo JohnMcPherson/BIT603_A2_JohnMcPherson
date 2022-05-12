@@ -70,10 +70,11 @@ public class IntegrationTest_Login {
         loginButton.callOnClick();
         confirmErrorMessage("Please enter your Password");
 
-        //enter a user name and check missing password message
+        //enter a password and confirm no error message
         password.setText("junkpassword");
         loginButton.callOnClick();
         confirmErrorMessage("");
+        // this will change when we do a proper login. This would fail because the password is incorrect
 
         // clear the user name and check missing user name message
         userName.setText("");

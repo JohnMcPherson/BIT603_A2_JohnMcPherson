@@ -55,33 +55,34 @@ public class UnitTest_User_And_Login {
     }
 
     private void checkSelectedUserIsCorrect() {
-        String selectedUser = "Trini";
-        String password = "Tiger";
-        String favouriteColour = "Yellow";
-        int colourCode = Color.YELLOW;
+        String TRINI = "Trini";
+        String TRINI_PASSWORD = "Tiger";
+        String TRINI_FAVOURITE_COLOUR = "Yellow";
+        int TRINI_CODE_OF_FAVOURITE_COLOUR = Color.YELLOW;
 
-        User foundUser = User.find(selectedUser);
-        assertTrue(foundUser.getUserName().equals(selectedUser));
-        assertTrue(foundUser.getPassword().equals(password));
-        assertTrue(foundUser.getFavouriteColour().equals(favouriteColour));
-        assertEquals(foundUser.getColourCode(), colourCode);
+        User foundUser = User.find(TRINI);
+        assertEquals(foundUser.getUserName(), TRINI);
+        assertEquals(foundUser.getPassword(), TRINI_PASSWORD);
+        assertEquals(foundUser.getFavouriteColour(), TRINI_FAVOURITE_COLOUR);
+        assertEquals(foundUser.getColourCode(), TRINI_CODE_OF_FAVOURITE_COLOUR);
     }
 
     @Test
     public void testAddUser() {
-        String userName = "Harry";
-        String password = "Fox";
-        String favouriteColour = "Blue";
-        int colourCode = Color.BLUE;
+        String HARRY = "Harry";
+        String HARRY_PASSWORD = "Fox";
+        String HARRY_FAVOURITE_COLOUR = "Blue";
+        int HARRY_CODE_OF_FAVOURITE_COLOUR = Color.BLUE;
 
-        User.addUser(userName, password, favouriteColour, colourCode);
+        User.addUser(HARRY, HARRY_PASSWORD, HARRY_FAVOURITE_COLOUR, HARRY_CODE_OF_FAVOURITE_COLOUR);
 
         // confirm that the user was added
-        User newUser = User.getAllUsers().get(userName);
-        assertTrue(newUser.getUserName().equals(userName));
-        assertTrue(newUser.getPassword().equals(password));
-        assertTrue(newUser.getFavouriteColour().equals(favouriteColour));
-        assertEquals(newUser.getColourCode(), colourCode);
+        User newUser = User.getAllUsers().get(HARRY);
+        assert newUser != null; // resolves a warning. And if newUser is not null, we want to crash the test
+        assertEquals(newUser.getUserName(), HARRY);
+        assertEquals(newUser.getPassword(), HARRY_PASSWORD);
+        assertEquals(newUser.getFavouriteColour(), HARRY_FAVOURITE_COLOUR);
+        assertEquals(newUser.getColourCode(), HARRY_CODE_OF_FAVOURITE_COLOUR);
     }
 
 
@@ -118,13 +119,15 @@ public class UnitTest_User_And_Login {
 
     @Test
     public void testLoginPasswordFail() {
+        String JASON = "Jason";
+
         //start by logging in a user (Jason)
         testForSuccessfulLogin();
         // and checking we have a logged in user
         assertNotEquals(User.getLoggedInUser(), null);
 
         // try to log in with a wrong password
-        String nameOfTestUser = "Jason";
+        String nameOfTestUser = JASON;
         boolean loginSuccessful = User.loginUser(nameOfTestUser, "wrongPassword");
         // check that the login method indicated failure
         assertFalse(loginSuccessful);

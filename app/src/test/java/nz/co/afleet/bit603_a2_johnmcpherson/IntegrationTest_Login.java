@@ -57,6 +57,9 @@ public class IntegrationTest_Login {
 
     @Test
     public void errorMessages_areCorrect() {
+        final String ZACK = "Zack";
+        final String ZACK_PASSWORD = "Elephant";
+
         // check our starting point
         confirmErrorMessage("");
 
@@ -66,7 +69,7 @@ public class IntegrationTest_Login {
         confirmErrorMessage("Please enter your User Name and Password");
 
         //enter a user name and check missing password message
-        userName.setText("Zack");
+        userName.setText(ZACK);
         loginButton.callOnClick();
         confirmErrorMessage("Please enter your Password");
 
@@ -76,7 +79,7 @@ public class IntegrationTest_Login {
         confirmErrorMessage("Sorry. We did not recognise that user/password combination. Please try again");
 
         //enter the correct password and confirm error message is cleared
-        password.setText("Elephant");
+        password.setText(ZACK_PASSWORD);
         loginButton.callOnClick();
         confirmErrorMessage("");
 

@@ -75,6 +75,11 @@ public class IntegrationTest_Login {
         loginButton.callOnClick();
         confirmErrorMessage("Sorry. We did not recognise that user/password combination. Please try again");
 
+        //enter the correct password and confirm error message is cleared
+        password.setText("Elephant");
+        loginButton.callOnClick();
+        confirmErrorMessage("");
+
         // clear the user name and check missing user name message
         userName.setText("");
         loginButton.callOnClick();

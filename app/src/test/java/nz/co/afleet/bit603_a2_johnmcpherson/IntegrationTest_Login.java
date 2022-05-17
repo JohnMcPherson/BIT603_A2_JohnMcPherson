@@ -66,15 +66,14 @@ public class IntegrationTest_Login {
         confirmErrorMessage("Please enter your User Name and Password");
 
         //enter a user name and check missing password message
-        userName.setText("Test User");
+        userName.setText("Zack");
         loginButton.callOnClick();
         confirmErrorMessage("Please enter your Password");
 
-        //enter a password and confirm no error message
+        //enter an incorrect password and confirm error message
         password.setText("junkpassword");
         loginButton.callOnClick();
-        confirmErrorMessage("");
-        // this will change when we do a proper login. This would fail because the password is incorrect
+        confirmErrorMessage("Sorry. We did not recognise that user/password combination. Please try again");
 
         // clear the user name and check missing user name message
         userName.setText("");

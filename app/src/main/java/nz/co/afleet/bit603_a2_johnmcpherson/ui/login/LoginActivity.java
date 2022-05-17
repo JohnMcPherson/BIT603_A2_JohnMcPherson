@@ -28,37 +28,48 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(v -> {
             boolean hasUserName = !editTextUserName.getText().toString().isEmpty();
             boolean hasPassword = !editTextPassword.getText().toString().isEmpty();
+            boolean loginSuccessful = false; // we have not yet tried to login, so initialise as false
+
             if (hasUserName && hasPassword) {
-                boolean loginSuccessful = User.loginUser(editTextUserName.getText().toString(), editTextPassword.getText().toString());
-                if (loginSuccessful) {
-                    textViewErrorMessage.setText("");
-                    launchMainActivity();
-                } else {
-                    textViewErrorMessage.setText(R.string.error_incorrect_login) ;
-                }
-            } else {
-                String stringErrorMessage = determineErrorMessage(hasUserName, hasPassword);
-                textViewErrorMessage.setText(stringErrorMessage);
+                // try to login
+                loginSuccessful = User.loginUser(editTextUserName.getText().toString(), editTextPassword.getText().toString());
             }
+            // determine the error message and set it. (Even if the login is successful, we want to clear the error message)
+            String errorMessage = determineErrorMessage(hasUserName, hasPassword, loginSuccessful);
+            textViewErrorMessage.setText(errorMessage);
+
+            // launch the Main Activity (if we have a successful login)
+            if (loginSuccessful) {
+                 launchMainActivity();
+            }
+
         });
+    }
+
+    private String determineErrorMessage(boolean hasUserName, boolean hasPassword, boolean loginSuccessful) {
+        if (loginSuccessful) return ""; // clear the error message
+
+        // we don't have a successful login. If we have both user name and password, we must have a bad combination
+        if (hasUserName && hasPassword) return getString(R.string.error_incorrect_login);
+
+        // We are missing userName, password, or both
+        String errorMessage = getString(R.string.login_error_header) + " ";
+        if (hasUserName) {
+            // we have a user name. So, it must be just the password that is missing
+            errorMessage += (getString(R.string.login_error_password));
+        } else {
+            // we are missing the user name
+            errorMessage += getString(R.string.login_error_user_name);
+            // are we also missing the password?
+            if (!hasPassword) {
+                errorMessage += (" " + getString(R.string.and) + " " + getString(R.string.login_error_password));
+            }
+        }
+        return errorMessage;
     }
 
     private void launchMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
-    private String determineErrorMessage(boolean hasUserName, boolean hasPassword) {
-        String errorMessage = getString(R.string.login_error_header) + " ";
-        if (!hasUserName) {
-            errorMessage += getString(R.string.login_error_user_name);
-            if (!hasPassword) {
-                errorMessage += (" " + getString(R.string.and) + " " + getString(R.string.login_error_password));
-            }
-        } else {
-            // For this path, we don't need to check hasPassword. The method should not have been called if userName and Password are both empty
-            errorMessage += (getString(R.string.login_error_password));
-        }
-        return errorMessage;
     }
 }

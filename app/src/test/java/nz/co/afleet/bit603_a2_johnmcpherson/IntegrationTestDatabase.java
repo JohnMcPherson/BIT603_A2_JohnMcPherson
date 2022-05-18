@@ -27,7 +27,7 @@ public class IntegrationTestDatabase {
 
 
     @Before
-    public void initialiseApplicationInstance() {
+    public void initialiseApplicationAndDatabase() {
         Application application = ApplicationProvider.getApplicationContext();
         inventoryDatabase = InventoryDatabase.getInstance(application);
         daoInventory = inventoryDatabase.daoInventory();

@@ -20,6 +20,12 @@ import static org.junit.Assert.assertTrue;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class UnitTest_User_And_Login {
+    // make these values commonly available throughout the test suite
+    public static final String HARRY = "Harry";
+    public static final String HARRY_PASSWORD = "Fox";
+    public static final String HARRY_FAVOURITE_COLOUR = "Blue";
+    public static final int HARRY_CODE_OF_FAVOURITE_COLOUR = Color.BLUE;
+
     @Test
     public void userCreateRead_isCorrect() {
         String USER_NAME = "Jason";
@@ -69,11 +75,6 @@ public class UnitTest_User_And_Login {
 
     @Test
     public void testAddUser() {
-        String HARRY = "Harry";
-        String HARRY_PASSWORD = "Fox";
-        String HARRY_FAVOURITE_COLOUR = "Blue";
-        int HARRY_CODE_OF_FAVOURITE_COLOUR = Color.BLUE;
-
         User.addUser(HARRY, HARRY_PASSWORD, HARRY_FAVOURITE_COLOUR, HARRY_CODE_OF_FAVOURITE_COLOUR);
 
         // confirm that the user was added

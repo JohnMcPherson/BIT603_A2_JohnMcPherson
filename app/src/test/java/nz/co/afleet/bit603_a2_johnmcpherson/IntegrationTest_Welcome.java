@@ -39,6 +39,17 @@ public class IntegrationTest_Welcome {
         confirmWelcomeMessageDisplayed(WELCOME + " " + TRINI);
     }
 
+    @Test
+    public void checkWelcomeMessageNoUser() {
+        // the real app shouldn't get here, but we have code for it, so test it
+
+        // make sure no one is logged in
+        User.logoutUser();
+
+        // confirm all we have is the word "Welcome"
+        confirmWelcomeMessageDisplayed(WELCOME);
+    }
+
     private void confirmWelcomeMessageDisplayed(String expectedMessage) {
         String actualMessage = welcomeMessage.getText().toString();
         assertEquals(expectedMessage, actualMessage);

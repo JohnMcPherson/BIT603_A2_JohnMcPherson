@@ -83,11 +83,12 @@ public class IntegrationTest_Login {
         loginButton.callOnClick();
         confirmErrorMessage("Please enter your User Name");
 
-        //enter the correct user name and password and confirm error message is cleared
+        // enter the correct user name and password and confirm error message is cleared
         userName.setText(ZACK);
         password.setText(ZACK_PASSWORD);
         loginButton.callOnClick();
         confirmErrorMessage("");
+        // note that we are not testing for the correct Intent for the Home screen (which would be happening here)
     }
 
     private void confirmErrorMessage(String requiredText) {

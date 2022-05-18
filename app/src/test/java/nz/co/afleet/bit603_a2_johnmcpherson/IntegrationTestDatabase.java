@@ -9,8 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntegrationTestDatabase {
@@ -34,17 +35,34 @@ public class IntegrationTestDatabase {
 
     @Test
     public void testCreateInventoryItem() {
+        // test with whole number quantity
         InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY);
+        testInventoryItemContent(sugarInventory, SUGAR, SUGAR_QUANTITY);
 
-        assertEquals(sugarInventory.getName(), SUGAR);
-        // test with whole number
-        assertEquals(sugarInventory.getQuantity(), SUGAR_QUANTITY, 0);
-
+        // and test with decimal number quantity
         InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
-
-        assertEquals(flourInventory.getName(), FLOUR);
-        // test with decimal number
-        assertEquals(flourInventory.getQuantity(), FLOUR_QUANTITY, 0);
+        testInventoryItemContent(flourInventory, FLOUR, FLOUR_QUANTITY);
     }
 
+    @Test
+    public void testAddInventoryItemsToDatabase() {
+        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY);
+        InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
+
+        // add items to the database
+        daoInventory.addInventoryItem(sugarInventory);
+        daoInventory.addInventoryItem(flourInventory);
+
+        List<InventoryItem> inventoryItems = daoInventory.getInventoryItems();
+        // confirm the number of items in the database
+        assertEquals(inventoryItems.size(), 2);
+        // and the contents
+        testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY);
+        testInventoryItemContent(inventoryItems.get(1), FLOUR, FLOUR_QUANTITY);
+    }
+
+    private void testInventoryItemContent(InventoryItem item, String expectedName, double expectedQuantity) {
+        assertEquals(item.getName(), expectedName);
+        assertEquals(item.getQuantity(), expectedQuantity, 0);
+    }
 }

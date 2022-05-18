@@ -65,6 +65,11 @@ public class User {
         return loggedInUser;
     }
 
+    public static void logoutUser() {
+        // ensure that no user is logged in
+        loggedInUser = null;
+    }
+
     public User(String userName, String password, String favouriteColour, int colourCode) {
         this.userName = userName;
         this.password = password;

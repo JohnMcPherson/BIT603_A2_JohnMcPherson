@@ -29,30 +29,15 @@ public class IntegrationTest_Welcome {
 
     @Before
     public void setupLoginActivity() {
+        User.loginUser(TRINI, TRINI_PASSWORD);
         mainActivity = Robolectric.setupActivity(MainActivity.class);
         welcomeMessage = mainActivity.findViewById(R.id.textViewWelcomeMessage);
     }
 
     @Test
     public void checkWelcomeMessage() {
-        User.loginUser(TRINI, TRINI_PASSWORD);
-        confirmWelcomeMessageDisplayed(WELCOME + " " + TRINI);
-    }
-
-    @Test
-    public void checkWelcomeMessageNoUser() {
-        // the real app shouldn't get here, but we have code for it, so test it
-
-        // make sure no one is logged in
-        User.logoutUser();
-
-        // confirm all we have is the word "Welcome"
-        confirmWelcomeMessageDisplayed(WELCOME);
-    }
-
-    private void confirmWelcomeMessageDisplayed(String expectedMessage) {
+        String expectedMessage = WELCOME + " " + TRINI;
         String actualMessage = welcomeMessage.getText().toString();
         assertEquals(expectedMessage, actualMessage);
     }
-
 }

@@ -111,7 +111,7 @@ public class WelcomeScreenDisplaysCorrectly {
         textView3.check(matches(withText("Welcome Jason")));
 
         ViewInteraction button = onView(
-                allOf(withId(R.id.button), withText("LOGOUT"),
+                allOf(withId(R.id.buttonLogout), withText("LOGOUT"),
                         withParent(withParent(withId(R.id.view_pager))),
                         isDisplayed()));
         button.check(matches(isDisplayed()));

@@ -197,7 +197,7 @@ public class LoginWithCorrectErrorMessages {
 
         // confirm we reached the Home screen. (Using the Logout button as evidence)
         ViewInteraction button = onView(
-                allOf(withId(R.id.button), withText("LOGOUT"),
+                allOf(withId(R.id.buttonLogout), withText("LOGOUT"),
                         withParent(withParent(withId(R.id.view_pager))),
                         isDisplayed()));
         button.check(matches(isDisplayed()));

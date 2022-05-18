@@ -34,20 +34,17 @@ public class IntegrationTestDatabase {
 
     @Test
     public void testCreateInventoryItem() {
-        InventoryItem sugarInventory = new InventoryItem();
-        sugarInventory.setName(SUGAR);
-        sugarInventory.setQuantity(SUGAR_QUANTITY);
+        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY);
 
         assertEquals(sugarInventory.getName(), SUGAR);
         // test with whole number
         assertEquals(sugarInventory.getQuantity(), SUGAR_QUANTITY, 0);
 
-        InventoryItem flourInventory = new InventoryItem();
-        flourInventory.setName(FLOUR);
-        flourInventory.setQuantity(FLOUR_QUANTITY);
+        InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
 
         assertEquals(flourInventory.getName(), FLOUR);
         // test with decimal number
         assertEquals(flourInventory.getQuantity(), FLOUR_QUANTITY, 0);
     }
+
 }

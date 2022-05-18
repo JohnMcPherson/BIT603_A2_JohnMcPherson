@@ -19,6 +19,16 @@ import androidx.room.PrimaryKey;
 @Entity(indices = {@Index(value = {"Name"},
                     unique = true)})
 public class InventoryItem {
+
+    // Make it quicker and less error prone to create a new inventory item
+    public static InventoryItem create(String name, double quantity) {
+        InventoryItem item = new InventoryItem();
+        item.setName(name);
+        item.setQuantity(quantity);
+        return item;
+    }
+
+
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private int id;

@@ -28,7 +28,7 @@ public class InventoryItem {
         return item;
     }
 
-
+    // Good practice to add an ID, although we do not expect to need it (yet)
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private int id;

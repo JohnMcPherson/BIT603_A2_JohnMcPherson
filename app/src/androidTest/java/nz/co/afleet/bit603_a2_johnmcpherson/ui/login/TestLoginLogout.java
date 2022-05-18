@@ -22,7 +22,6 @@ import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -33,13 +32,13 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginWithCorrectErrorMessages {
+public class TestLoginLogout {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);
 
     @Test
-    public void loginWithCorrectErrorMessages() {
+    public void testLoginLogout() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -48,6 +47,8 @@ public class LoginWithCorrectErrorMessages {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        // Login
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editTextUserName),
@@ -59,6 +60,26 @@ public class LoginWithCorrectErrorMessages {
                         isDisplayed()));
         appCompatEditText.perform(click());
 
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.editTextUserName),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("Jason"), closeSoftKeyboard());
+
+        ViewInteraction appCompatEditText3 = onView(
+                allOf(withId(R.id.editTextPassword),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                5),
+                        isDisplayed()));
+        appCompatEditText3.perform(replaceText("Sword"), closeSoftKeyboard());
+
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.buttonLogin), withText("Login"),
                         childAtPosition(
@@ -69,122 +90,24 @@ public class LoginWithCorrectErrorMessages {
                         isDisplayed()));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.textErrorMessage), withText("Please enter your User Name and Password"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        textView.check(matches(withText("Please enter your User Name and Password")));
-
-        ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.editTextUserName),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText2.perform(click());
-
-        ViewInteraction appCompatEditText3 = onView(
-                allOf(withId(R.id.editTextUserName),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        appCompatEditText3.perform(replaceText("Zack"), closeSoftKeyboard());
-
-        ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.buttonLogin), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                8),
-                        isDisplayed()));
-        materialButton2.perform(click());
-
-        ViewInteraction textView2 = onView(
-                allOf(withId(R.id.textErrorMessage), withText("Please enter your Password"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        textView2.check(matches(withText("Please enter your Password")));
-
-        ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editTextPassword),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                5),
-                        isDisplayed()));
-        appCompatEditText4.perform(replaceText("junkpassword"), closeSoftKeyboard());
-
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.buttonLogin), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                8),
-                        isDisplayed()));
-        materialButton3.perform(click());
-
-        ViewInteraction textView3 = onView(
-                allOf(withId(R.id.textErrorMessage), withText("Sorry. We did not recognise that user/password combination. Please try again"),
-                        withParent(withParent(withId(android.R.id.content))),
-                        isDisplayed()));
-        textView3.check(matches(withText("Sorry. We did not recognise that user/password combination. Please try again")));
-
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.editTextPassword), withText("junkpassword"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                5),
-                        isDisplayed()));
-        appCompatEditText5.perform(longClick());
-
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
         try {
-            Thread.sleep(50);
+            Thread.sleep(700);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.editTextPassword), withText("junkpassword"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                5),
-                        isDisplayed()));
-        appCompatEditText6.perform(replaceText("Elephant"));
+        // Logout
 
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.editTextPassword), withText("Elephant"),
+        ViewInteraction materialButton2 = onView(
+                allOf(withId(R.id.buttonLogout), withText("Logout"),
                         childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                5),
+                                withParent(withId(R.id.view_pager)),
+                                1),
                         isDisplayed()));
-        appCompatEditText7.perform(closeSoftKeyboard());
-
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(R.id.buttonLogin), withText("Login"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                8),
-                        isDisplayed()));
-        materialButton4.perform(click());
+        materialButton2.perform(click());
 
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
@@ -195,12 +118,25 @@ public class LoginWithCorrectErrorMessages {
             e.printStackTrace();
         }
 
-        // confirm we reached the Home screen. (Using the Logout button as evidence)
+        // Confirm on Login Screen, and input fields are empty
+
         ViewInteraction button = onView(
-                allOf(withId(R.id.buttonLogout), withText("LOGOUT"),
-                        withParent(withParent(withId(R.id.view_pager))),
+                allOf(withId(R.id.buttonLogin), withText("LOGIN"),
+                        withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
         button.check(matches(isDisplayed()));
+
+        ViewInteraction editText = onView(
+                allOf(withId(R.id.editTextUserName),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        editText.check(matches(withText("")));
+
+        ViewInteraction editText2 = onView(
+                allOf(withId(R.id.editTextPassword),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        editText2.check(matches(withText("")));
     }
 
     private static Matcher<View> childAtPosition(

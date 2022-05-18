@@ -21,10 +21,10 @@ import static org.junit.Assert.assertTrue;
  */
 public class UnitTest_User_And_Login {
     // make these values commonly available throughout the test suite
-    public static final String HARRY = "Harry";
-    public static final String HARRY_PASSWORD = "Fox";
-    public static final String HARRY_FAVOURITE_COLOUR = "Blue";
-    public static final int HARRY_CODE_OF_FAVOURITE_COLOUR = Color.BLUE;
+    public static final String TRINI = "Trini";
+    public static final String TRINI_PASSWORD = "Tiger";
+    public static final String TRINI_FAVOURITE_COLOUR = "Yellow";
+    public static final int TRINI_CODE_OF_FAVOURITE_COLOUR = Color.YELLOW;
 
     @Test
     public void userCreateRead_isCorrect() {
@@ -61,11 +61,6 @@ public class UnitTest_User_And_Login {
     }
 
     private void checkSelectedUserIsCorrect() {
-        String TRINI = "Trini";
-        String TRINI_PASSWORD = "Tiger";
-        String TRINI_FAVOURITE_COLOUR = "Yellow";
-        int TRINI_CODE_OF_FAVOURITE_COLOUR = Color.YELLOW;
-
         User foundUser = User.find(TRINI);
         assertEquals(foundUser.getUserName(), TRINI);
         assertEquals(foundUser.getPassword(), TRINI_PASSWORD);
@@ -75,6 +70,10 @@ public class UnitTest_User_And_Login {
 
     @Test
     public void testAddUser() {
+        final String HARRY = "Harry";
+        final String HARRY_PASSWORD = "Fox";
+        final String HARRY_FAVOURITE_COLOUR = "Blue";
+        final int HARRY_CODE_OF_FAVOURITE_COLOUR = Color.BLUE;
         User.addUser(HARRY, HARRY_PASSWORD, HARRY_FAVOURITE_COLOUR, HARRY_CODE_OF_FAVOURITE_COLOUR);
 
         // confirm that the user was added

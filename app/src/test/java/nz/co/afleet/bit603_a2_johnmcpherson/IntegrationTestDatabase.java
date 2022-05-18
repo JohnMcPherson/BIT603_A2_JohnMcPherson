@@ -59,6 +59,7 @@ public class IntegrationTestDatabase {
         // and the contents
         testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY);
         testInventoryItemContent(inventoryItems.get(1), FLOUR, FLOUR_QUANTITY);
+        // note: we are not interested in the ID, which was added for consistency with good database practice
     }
 
     private void testInventoryItemContent(InventoryItem item, String expectedName, double expectedQuantity) {

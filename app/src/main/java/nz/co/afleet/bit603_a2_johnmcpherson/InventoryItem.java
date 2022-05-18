@@ -16,7 +16,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 // This is a room database entity. Make the Name unique by indexing and annotating as unique
-// We will need to enforce this at a higher level in the app, or we risk a crash
+// TODO We need to enforce this at a higher level in the app, or we risk a crash
 @Entity(indices = {@Index(value = {"Name"},
                     unique = true)})
 public class InventoryItem {

@@ -19,7 +19,7 @@ import nz.co.afleet.bit603_a2_johnmcpherson.R;
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.tab_welcome_header, R.string.tab_text_inventory};
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_home_header, R.string.tab_text_inventory};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context context, FragmentManager fm) {
@@ -35,7 +35,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         // John...
         // I replaced the boiler plate code to return the fragment created by us
         switch (position) {
-            case 0: return new WelcomeFragment();
+            case 0: return new HomeFragment();
             // break not required because we have used return
             case 1: return new InventoryFragment();
 

@@ -1,9 +1,12 @@
 package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.User;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.login.LoginActivity;
 
 // getString() has a warning, with root cause that getContext() is nullable. I assumed (and tested) that the context is known by the time
 // onCreateView() is called
@@ -26,6 +30,16 @@ public class HomeFragment extends Fragment {
             String stringWelcomeMessage = getContext().getString(R.string.welcome_message_header) + " " + User.getLoggedInUser().getUserName();
             textViewWelcomeMessage.setText(stringWelcomeMessage);
         }
+
+        Button buttonLogout = view.findViewById(R.id.buttonLogout);
+        buttonLogout.setOnClickListener(v -> {
+            // create Intent (the intended new activity)
+            Activity currentActivity = getActivity();
+            Intent loginActivityIntent = new Intent(getActivity(), LoginActivity.class);
+
+            // return to LoginActivity, by using the intent
+            startActivity(loginActivityIntent);
+        });
         return view;
     }
 }

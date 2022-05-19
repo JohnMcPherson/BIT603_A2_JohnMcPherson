@@ -15,9 +15,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ * Test that users are created correctly
  */
 public class UnitTest_User_And_Login {
     // make these values commonly available throughout the test suite

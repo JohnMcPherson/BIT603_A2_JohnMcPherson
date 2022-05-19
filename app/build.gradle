@@ -34,6 +34,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'nz.co.afleet.bit603_a2_johnmcpherson'
 }
 
 dependencies {

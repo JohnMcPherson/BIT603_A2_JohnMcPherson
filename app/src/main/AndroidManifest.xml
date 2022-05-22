@@ -7,7 +7,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BIT603_A2_JohnMcPherson" >
+        android:theme="@style/Theme.BIT603_A2_JohnMcPherson">
+        <activity
+            android:name=".ui.AddInventoryActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="false"
@@ -15,7 +18,7 @@
             android:theme="@style/Theme.BIT603_A2_JohnMcPherson.NoActionBar" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
 
             <!-- login is now the launching activity -->
             <intent-filter>

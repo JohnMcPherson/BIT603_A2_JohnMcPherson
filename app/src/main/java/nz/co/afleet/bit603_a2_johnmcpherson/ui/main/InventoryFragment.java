@@ -1,6 +1,7 @@
 package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,8 +13,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.placeholder.PlaceholderContent;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
 
 /**
  * A fragment representing a list of Items.
@@ -56,6 +60,7 @@ public class InventoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inventory_list, container, false);
         View listView = view.findViewById(R.id.list);
+
         // Set the adapter
         if (listView instanceof RecyclerView) {
             Context context = view.getContext();
@@ -67,6 +72,13 @@ public class InventoryFragment extends Fragment {
             }
             recyclerView.setAdapter(new MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS));
         }
+
+        FloatingActionButton buttonAddInventory = view.findViewById(R.id.fabAddInventoryItem);
+        buttonAddInventory.setOnClickListener(v -> {
+            Intent addItemIntent = new Intent(view.getContext(), AddInventoryActivity.class);
+            startActivity(addItemIntent);
+        });
+
         return view;
     }
 }

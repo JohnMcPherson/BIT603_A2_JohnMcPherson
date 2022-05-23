@@ -67,6 +67,12 @@ public class InventoryItem {
         }
     }
 
+    // provides access to DaoInventory.getInventoryItems(). (All access to Inventory items in the Database to be done through InventoryItem class)
+    public static List<InventoryItem> getInventoryItems(Application application) {
+        InventoryDatabase inventoryDatabase = InventoryDatabase.getInstance(application);
+        DaoInventory daoInventory = inventoryDatabase.daoInventory();
+        return daoInventory.getInventoryItems();
+    }
 
     private static DaoInventory getDaoInventory(Application application) {
         InventoryDatabase inventoryDatabase = InventoryDatabase.getInstance(application);
@@ -98,6 +104,11 @@ public class InventoryItem {
 
     public int getId() {
         return id;
+    }
+
+    // to provide text string for display
+    public String getIdString() {
+        return String.valueOf(getId());
     }
 
     public void setId(int id) {

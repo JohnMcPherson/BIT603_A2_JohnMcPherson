@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
-import nz.co.afleet.bit603_a2_johnmcpherson.placeholder.PlaceholderContent;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
 
 /**
@@ -70,7 +70,8 @@ public class InventoryFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(PlaceholderContent.ITEMS));
+            // changed AndroidStudio provided code to use InventoryItems
+            recyclerView.setAdapter(new InventoryItemRecyclerViewAdapter(InventoryItem.getInventoryItems(getActivity().getApplication())));
         }
 
         FloatingActionButton buttonAddInventory = view.findViewById(R.id.fabAddInventoryItem);

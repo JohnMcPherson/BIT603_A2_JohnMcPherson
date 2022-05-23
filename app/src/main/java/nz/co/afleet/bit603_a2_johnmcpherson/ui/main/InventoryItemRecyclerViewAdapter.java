@@ -1,3 +1,8 @@
+/*
+    COMMENTS
+    -   Change AndroidStudio provided code to use InventoryItem
+*/
+
 package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -6,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.placeholder.PlaceholderContent.PlaceholderItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.databinding.FragmentInventoryBinding;
 
@@ -15,11 +21,11 @@ import java.util.List;
  * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<InventoryItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<PlaceholderItem> mValues;
+    private final List<InventoryItem> mValues;
 
-    public MyItemRecyclerViewAdapter(List<PlaceholderItem> items) {
+    public InventoryItemRecyclerViewAdapter(List<InventoryItem> items) {
         mValues = items;
     }
 
@@ -32,9 +38,10 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        InventoryItem inventoryItem = mValues.get(position);
+        holder.mItem = inventoryItem;
+        holder.mIdView.setText(inventoryItem.getIdString());
+        holder.mContentView.setText(inventoryItem.getName());
     }
 
     @Override
@@ -45,7 +52,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
         public final TextView mContentView;
-        public PlaceholderItem mItem;
+        public InventoryItem mItem;
 
         public ViewHolder(FragmentInventoryBinding binding) {
             super(binding.getRoot());

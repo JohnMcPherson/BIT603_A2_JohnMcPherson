@@ -56,7 +56,14 @@ public class InventoryItem {
     }
 
     public static boolean isDuplicateOfInventoryItem(Application application, String candidateName) {
-        // List<InventoryItem> currentInventoryItems = getDaoInventory(application).getInventoryItems();
+        List<InventoryItem> currentInventoryItems = getDaoInventory(application).getInventoryItems();
+        // check each current inventory item for the candidate name
+        for (InventoryItem inventoryItem : currentInventoryItems) {
+            if (inventoryItem.getName().equals(candidateName)) {
+                // a match means there is a duplicate
+                return true;
+            }
+        }
         return false;
     }
 

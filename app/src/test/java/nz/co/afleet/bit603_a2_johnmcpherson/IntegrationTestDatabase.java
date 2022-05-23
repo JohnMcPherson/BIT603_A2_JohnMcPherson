@@ -11,6 +11,10 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.util.List;
 
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.DaoInventory;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryDatabase;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

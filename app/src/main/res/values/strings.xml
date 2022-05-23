@@ -28,8 +28,8 @@
     <string name="duplicate_inventory_item">Sorry. That item is already in inventory</string>
     <string name="added_to_inventory">added to Inventory</string>
     <string name="discarding_title">Discarding</string>
-    <string name="cancelling_warning_message">Do you want to discard this draft inventory item?</string>
-    <string name="continue_editing">Keep draft</string>
-    <string name="abandon_editing">Discard</string>
+    <string name="discard_warning_message">Do you want to discard this draft inventory item?</string>
+    <string name="keep_draft">Keep draft</string>
+    <string name="discard_draft">Discard</string>
     <string name="inventory_add_cancelled">Discarded draft inventory item</string>
 </resources>

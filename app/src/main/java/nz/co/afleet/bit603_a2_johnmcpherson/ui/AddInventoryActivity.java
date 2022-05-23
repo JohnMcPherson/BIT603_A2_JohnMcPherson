@@ -67,33 +67,38 @@ public class AddInventoryActivity extends AppCompatActivity {
         });
 
         buttonCancel.setOnClickListener(v -> {
-            if (!editTextItemName.getText().toString().isEmpty() || !editTextQuantity.getText().toString().isEmpty()) {
-                // work to lose, so warn the user of the consequences, and get confirmation
-                AlertDialog.Builder builder = new AlertDialog.Builder(AddInventoryActivity.this);
-                builder.setTitle(R.string.discarding_title);
-                builder.setMessage(R.string.cancelling_warning_message);
-                // We are cancelling a cancel, so we need to be careful with the wording
-                builder.setNegativeButton(R.string.continue_editing, (dialog, which) -> {
-                    // will just return to the editing screen
-                });
-                builder.setPositiveButton(R.string.abandon_editing, (dialog, which) -> {
-                    Toast.makeText(AddInventoryActivity.this, R.string.inventory_add_cancelled, Toast.LENGTH_LONG).show();
-                    finish();
-                });
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            } else {
-                finish();
-            }
+            manageCancellationAction();
         });
+    }
+
+    private void manageCancellationAction() {
+        if (!editTextItemName.getText().toString().isEmpty() || !editTextQuantity.getText().toString().isEmpty()) {
+            // work to lose, so warn the user of the consequences, and get confirmation
+            AlertDialog.Builder builder = new AlertDialog.Builder(AddInventoryActivity.this);
+            builder.setTitle(R.string.discarding_title);
+            builder.setMessage(R.string.discard_warning_message);
+            // We are cancelling a cancel, so we need to be careful with the wording
+            builder.setNegativeButton(R.string.keep_draft, (dialog, which) -> {
+                // will just return to the editing screen
+            });
+            builder.setPositiveButton(R.string.discard_draft, (dialog, which) -> {
+                Toast.makeText(AddInventoryActivity.this, R.string.inventory_add_cancelled, Toast.LENGTH_LONG).show();
+                finish();
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        } else {
+            finish();
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        // determine what to do if someone clicks the home (back arrow) button
         switch (item.getItemId()) {
             // act on the "Home" menu item
             case android.R.id.home:
-                this.finish();
+                manageCancellationAction(); // same as hitting the Cancel button
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -5,11 +5,13 @@ import androidx.room.Query;
 
 import java.util.List;
 
+// this interface and its methods are limited to default visibility so that only InventoryItem can use it
+
 @androidx.room.Dao
-public interface DaoInventory {
+interface DaoInventory {
     @Insert
-    public void addInventoryItem(InventoryItem inventoryItem);
+    void addInventoryItem(InventoryItem inventoryItem);
 
     @Query("SELECT * FROM InventoryItem")
-    public List<InventoryItem> getInventoryItems();
+    List<InventoryItem> getInventoryItems();
 }

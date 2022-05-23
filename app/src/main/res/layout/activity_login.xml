@@ -52,7 +52,7 @@
         android:id="@+id/textPasswordLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Password"
+        android:text="@string/password_label"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextPassword"
         app:layout_constraintStart_toEndOf="@+id/mandatoryPassword" />
 
@@ -73,9 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="textUserLabel,textPasswordLabel"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="45dp" />
+        app:constraint_referenced_ids="textUserLabel,textPasswordLabel" />
 
     <TextView
         android:id="@+id/textErrorMessage"

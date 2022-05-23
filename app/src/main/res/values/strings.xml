@@ -14,4 +14,17 @@
     <string name="logout">Logout</string>
     <string name="welcome_message_header">Welcome</string>
     <string name="error_incorrect_login">Sorry. We did not recognise that user/password combination. Please try again</string>
+    <string name="add_inventory_title">Add Inventory Item</string>
+    <string name="inventory_name_label">Item Name</string>
+    <string name="inventory_quantity_label">Quantity</string>
+    <string name="required">Required</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
+
+    <!--add inventory activity strings-->
+    <string name="missing_inventory_details_header">Please enter</string>
+    <string name="missing_inventory_item_name">Item Name</string>
+    <string name="missing_inventory_item_quantity">Quantity</string>
+    <string name="duplicate_inventory_item">Sorry. That item is already in inventory</string>
+    <string name="added_to_inventory">added to Inventory</string>
 </resources>

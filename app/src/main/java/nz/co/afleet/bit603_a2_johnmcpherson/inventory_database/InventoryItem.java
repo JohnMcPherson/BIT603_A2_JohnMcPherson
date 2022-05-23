@@ -44,7 +44,7 @@ public class InventoryItem {
     // Using a string for quantity, so we can provide a service directly to the UI, without the UI having to know
     // how the quantity is stored
     public static void addInventoryItemToDatabase(Application application, String name, String quantity) {
-        // initial check on data
+        // initial check on data quality
         if (name == null) return;
         double doubleQuantity;
         try {
@@ -61,6 +61,7 @@ public class InventoryItem {
 
         // don't allow duplicates
         if (!isDuplicateOfInventoryItem(application, name)) {
+            // if all OK, create and save the InventoryItem
             InventoryItem newInventoryItem = InventoryItem.create(name, doubleQuantity);
             getDaoInventory(application).addInventoryItem(newInventoryItem);
         }

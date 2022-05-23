@@ -21,10 +21,6 @@ public class IntegrationTestInventoryItem {
     InventoryDatabase inventoryDatabase;
     DaoInventory daoInventory;
 
-    private final String SUGAR = "Sugar";
-    private final double SUGAR_QUANTITY_DOUBLE = 4;
-    private final String SUGAR_QUANTITY_STRING = "4";
-
     @Before
     public void initialiseApplicationAndDatabase() {
         Application application = ApplicationProvider.getApplicationContext();
@@ -48,12 +44,15 @@ public class IntegrationTestInventoryItem {
         assertEquals(inventoryItems.size(), 0);
 
         // confirm addition of Sugar
+        String SUGAR = "Sugar";
+        String SUGAR_QUANTITY_STRING = "4";
+        double SUGAR_QUANTITY_DOUBLE = 4;
         InventoryItem.addInventoryItemToDatabase(application, SUGAR, SUGAR_QUANTITY_STRING);
 
         // confirm the number of items in the database
         inventoryItems = daoInventory.getInventoryItems();
         assertEquals(inventoryItems.size(), 1);
-        // and the contents
+        // check the contents (including conversion of string to double)
         testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY_DOUBLE);
     }
 

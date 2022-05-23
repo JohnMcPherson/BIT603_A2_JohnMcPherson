@@ -20,4 +20,10 @@
     <string name="required">Required</string>
     <string name="cancel">Cancel</string>
     <string name="add">Add</string>
+
+    <!--add inventory activity strings-->
+    <string name="missing_inventory_details_header">Please enter</string>
+    <string name="missing_inventory_item_name">Item Name</string>
+    <string name="missing_inventory_item_quantity">Quantity</string>
+    <string name="duplicate_inventory_item">Sorry. That item is already in the inventory</string>
 </resources>

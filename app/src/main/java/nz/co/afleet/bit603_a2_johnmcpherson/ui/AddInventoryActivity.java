@@ -46,10 +46,10 @@ public class AddInventoryActivity extends AppCompatActivity {
             boolean additionSuccessful = false; // we have not yet tried to add the item, so initialise as false
 
             if (hasItemName && hasPassword) {
-                // if (InventoryItem.isDuplicateOfInventoryItem(getApplication(), stringItemName))
-
-                // try to login
-                // additionSuccessful = User.loginUser(editTextItemName.getText().toString(), editTextQuantity.getText().toString());
+                if (!InventoryItem.isDuplicateOfInventoryItem(getApplication(), stringItemName)) {
+                   InventoryItem.addInventoryItemToDatabase(getApplication(), stringItemName, stringQuantity);
+                   additionSuccessful = true;
+                }
             }
             // determine the error message and set it. (Even if the login is successful, we want to clear the error message)
             String errorMessage = determineErrorMessage(hasItemName, hasPassword, additionSuccessful);
@@ -73,10 +73,11 @@ public class AddInventoryActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private String determineErrorMessage(boolean hasItemName, boolean hasQuantity, boolean notDuplicate) {
-        if (notDuplicate) return ""; // clear the error message
+    private String determineErrorMessage(boolean hasItemName, boolean hasQuantity, boolean additionSuccessful) {
+        if (additionSuccessful) return ""; // clear the error message
 
-        // notDuplicate has still false. If we have both item name and quantity, we must have a duplicate
+        // addition successful still false. If we have both item name and quantity, we must have a duplicate
+        // (for now) that is the only reason tested for not adding the item
         if (hasItemName && hasQuantity) return getString(R.string.duplicate_inventory_item);
 
         // We are missing itemName, quantity, or both

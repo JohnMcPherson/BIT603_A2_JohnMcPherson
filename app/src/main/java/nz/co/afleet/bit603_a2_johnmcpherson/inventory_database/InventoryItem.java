@@ -33,23 +33,25 @@ import java.util.List;
 public class InventoryItem {
 
     // Make it quicker and less error prone to create a new inventory item
-    public static InventoryItem create(String name, double quantity) {
+    static InventoryItem create(String name, double quantity) {
         InventoryItem item = new InventoryItem();
         item.setName(name);
         item.setQuantity(quantity);
         return item;
     }
 
-/*
+
     // Using a string for quantity, so we can provide a service directly to the UI, without the UI having to know
     // how the quantity is stored
-    public static boolean addInventoryItemToDatabase(Application application, String name, double quantity) {
+    public static void addInventoryItemToDatabase(Application application, String name, String quantity) {
         // initial check on data
-        if (name == null) return false;
-
+        if (name == null) return;
+        double doubleQuantity = Double.parseDouble(quantity);
+        InventoryItem newInventoryItem = InventoryItem.create(name, doubleQuantity);
+        getDaoInventory(application).addInventoryItem(newInventoryItem);
     }
 
-*/
+
     private static DaoInventory getDaoInventory(Application application) {
         InventoryDatabase inventoryDatabase = InventoryDatabase.getInstance(application);
         return inventoryDatabase.daoInventory();

@@ -46,9 +46,24 @@ public class InventoryItem {
     public static void addInventoryItemToDatabase(Application application, String name, String quantity) {
         // initial check on data
         if (name == null) return;
-        double doubleQuantity = Double.parseDouble(quantity);
-        InventoryItem newInventoryItem = InventoryItem.create(name, doubleQuantity);
-        getDaoInventory(application).addInventoryItem(newInventoryItem);
+        double doubleQuantity;
+        try {
+            doubleQuantity = Double.parseDouble(quantity);
+        } catch (NumberFormatException e) {
+            // doesn't crash, but does not indicate error type
+            return;
+        }
+
+        if (doubleQuantity < 0) {
+            // negatives prevented from getting into the database, but does not indicate error type
+            return;
+        }
+
+        // don't allow duplicates
+        if (!isDuplicateOfInventoryItem(application, name)) {
+            InventoryItem newInventoryItem = InventoryItem.create(name, doubleQuantity);
+            getDaoInventory(application).addInventoryItem(newInventoryItem);
+        }
     }
 
 

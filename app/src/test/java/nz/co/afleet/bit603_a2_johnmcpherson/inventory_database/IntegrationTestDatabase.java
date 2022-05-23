@@ -25,8 +25,8 @@ public class IntegrationTestDatabase {
     InventoryDatabase inventoryDatabase;
     DaoInventory daoInventory;
 
-    private final String SUGAR = "Sugar";
-    private final double SUGAR_QUANTITY = 4;
+    final String SUGAR = "Sugar";
+    final double SUGAR_QUANTITY = 4;
     private final String FLOUR = "Flour";
     private final double FLOUR_QUANTITY = 6.6;
 

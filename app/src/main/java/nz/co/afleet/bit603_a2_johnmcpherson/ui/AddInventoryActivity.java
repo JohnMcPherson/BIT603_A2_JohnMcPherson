@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,6 +58,7 @@ public class AddInventoryActivity extends AppCompatActivity {
 
             // launch the Main Activity (if we have a successful login)
             if (additionSuccessful) {
+                Toast.makeText(this,stringItemName + " " + getString(R.string.added_to_inventory), Toast.LENGTH_LONG).show();
                 finish();
             }
         });

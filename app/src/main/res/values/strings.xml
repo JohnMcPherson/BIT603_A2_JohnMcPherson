@@ -26,4 +26,5 @@
     <string name="missing_inventory_item_name">Item Name</string>
     <string name="missing_inventory_item_quantity">Quantity</string>
     <string name="duplicate_inventory_item">Sorry. That item is already in inventory</string>
+    <string name="added_to_inventory">added to Inventory</string>
 </resources>

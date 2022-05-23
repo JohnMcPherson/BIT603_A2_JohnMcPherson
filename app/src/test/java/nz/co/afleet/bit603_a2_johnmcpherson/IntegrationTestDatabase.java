@@ -12,6 +12,8 @@ import org.robolectric.RobolectricTestRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntegrationTestDatabase {
@@ -60,6 +62,11 @@ public class IntegrationTestDatabase {
         testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY);
         testInventoryItemContent(inventoryItems.get(1), FLOUR, FLOUR_QUANTITY);
         // note: we are not interested in the ID, which was added for consistency with good database practice
+
+        // check identification of duplicates
+        assertTrue(InventoryItem.isDuplicateOfInventoryItem(application, SUGAR));
+        assertFalse(InventoryItem.isDuplicateOfInventoryItem(application,"New Item"));
+
     }
 
     private void testInventoryItemContent(InventoryItem item, String expectedName, double expectedQuantity) {

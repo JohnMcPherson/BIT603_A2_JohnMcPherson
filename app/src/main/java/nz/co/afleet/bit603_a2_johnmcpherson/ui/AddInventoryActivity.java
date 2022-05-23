@@ -1,20 +1,17 @@
 package nz.co.afleet.bit603_a2_johnmcpherson.ui;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
-import nz.co.afleet.bit603_a2_johnmcpherson.User;
 import nz.co.afleet.bit603_a2_johnmcpherson.databinding.ActivityAddInventoryBinding;
-import nz.co.afleet.bit603_a2_johnmcpherson.databinding.ActivityMainBinding;
-
-
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 
 public class AddInventoryActivity extends AppCompatActivity {
 
@@ -42,20 +39,24 @@ public class AddInventoryActivity extends AppCompatActivity {
         buttonAdd = binding.buttonAdd;
 
         buttonAdd.setOnClickListener(v -> {
-            boolean hasItemName = !editTextItemName.getText().toString().isEmpty();
-            boolean hasPassword = !editTextQuantity.getText().toString().isEmpty();
-            boolean loginSuccessful = false; // we have not yet tried to login, so initialise as false
+            String stringItemName = editTextItemName.getText().toString();
+            String stringQuantity = editTextQuantity.getText().toString();
+            boolean hasItemName = !stringItemName.isEmpty();
+            boolean hasPassword = !stringQuantity.isEmpty();
+            boolean additionSuccessful = false; // we have not yet tried to add the item, so initialise as false
 
             if (hasItemName && hasPassword) {
+                // if (InventoryItem.isDuplicateOfInventoryItem(getApplication(), stringItemName))
+
                 // try to login
-                // loginSuccessful = User.loginUser(editTextItemName.getText().toString(), editTextQuantity.getText().toString());
+                // additionSuccessful = User.loginUser(editTextItemName.getText().toString(), editTextQuantity.getText().toString());
             }
             // determine the error message and set it. (Even if the login is successful, we want to clear the error message)
-            String errorMessage = determineErrorMessage(hasItemName, hasPassword, loginSuccessful);
+            String errorMessage = determineErrorMessage(hasItemName, hasPassword, additionSuccessful);
             textViewErrorMessage.setText(errorMessage);
 
             // launch the Main Activity (if we have a successful login)
-            if (loginSuccessful) {
+            if (additionSuccessful) {
                 // launchMainActivity();
             }
         });

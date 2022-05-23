@@ -68,6 +68,14 @@ public class IntegrationTest_AddInventoryItem {
         assertEquals(getErrorMessage(),"Please enter Item Name");
     }
 
+    @Test
+    public void checkErrorMessageForAllDetailsEntered() {
+        editTextItemName.setText("Eggs");
+        editTextQuantity.setText("36");
+        buttonAdd.performClick();
+        assertEquals(getErrorMessage(),"");
+     }
+
     private String getErrorMessage() {
         return errorMessage.getText().toString();
     }

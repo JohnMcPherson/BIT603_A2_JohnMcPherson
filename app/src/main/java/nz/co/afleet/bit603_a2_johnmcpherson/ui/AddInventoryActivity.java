@@ -35,11 +35,12 @@ public class AddInventoryActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        // use binding to find and initialise the required views
         editTextItemName = binding.editTextItemName;
         editTextQuantity = binding.editTextQuantity;
         textViewErrorMessage = binding.textErrorMessageAdd;
-
         buttonAdd = binding.buttonAdd;
+
         buttonAdd.setOnClickListener(v -> {
             boolean hasItemName = !editTextItemName.getText().toString().isEmpty();
             boolean hasPassword = !editTextQuantity.getText().toString().isEmpty();

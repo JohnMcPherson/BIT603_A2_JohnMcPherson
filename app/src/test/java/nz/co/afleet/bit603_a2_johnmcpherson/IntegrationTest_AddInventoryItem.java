@@ -6,6 +6,7 @@ ASSUMPTIONS
 
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.junit.Before;
@@ -16,19 +17,19 @@ import org.robolectric.RobolectricTestRunner;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
 
-import static nz.co.afleet.bit603_a2_johnmcpherson.UnitTest_User_And_Login.TRINI;
-import static nz.co.afleet.bit603_a2_johnmcpherson.UnitTest_User_And_Login.TRINI_PASSWORD;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntegrationTest_AddInventoryItem {
-    private AddInventoryActivity mainActivity;
+    private AddInventoryActivity addInventoryActivity;
     private TextView errorMessage;
+    Button buttonAdd;
 
     @Before
     public void setupLoginActivity() {
-        mainActivity = Robolectric.setupActivity(AddInventoryActivity.class);
-        errorMessage = mainActivity.findViewById(R.id.textErrorMessageAdd);
+        addInventoryActivity = Robolectric.setupActivity(AddInventoryActivity.class);
+        errorMessage = addInventoryActivity.findViewById(R.id.textErrorMessageAdd);
+        buttonAdd = addInventoryActivity.findViewById(R.id.buttonAdd);
     }
 
     @Test
@@ -36,5 +37,13 @@ public class IntegrationTest_AddInventoryItem {
         String expectedMessage = "";
         String actualMessage = errorMessage.getText().toString();
         assertEquals(expectedMessage, actualMessage);
+
+        // try to add an item with no details entered
+        buttonAdd.performClick();
+        assertEquals(getErrorMessage(),"Please enter Item Name and Quantity");
+    }
+
+    private String getErrorMessage() {
+        return errorMessage.getText().toString();
     }
 }

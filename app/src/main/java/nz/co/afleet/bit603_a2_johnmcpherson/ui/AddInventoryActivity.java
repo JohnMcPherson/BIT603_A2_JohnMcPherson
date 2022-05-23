@@ -57,7 +57,7 @@ public class AddInventoryActivity extends AppCompatActivity {
 
             // launch the Main Activity (if we have a successful login)
             if (additionSuccessful) {
-                // launchMainActivity();
+                finish();
             }
         });
     }

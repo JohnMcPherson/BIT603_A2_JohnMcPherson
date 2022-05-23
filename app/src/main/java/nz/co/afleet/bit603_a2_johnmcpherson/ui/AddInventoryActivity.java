@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
@@ -20,6 +21,7 @@ public class AddInventoryActivity extends AppCompatActivity {
     private EditText editTextItemName;
     private EditText editTextQuantity;
     private Button buttonAdd;
+    private Button buttonCancel;
     private TextView textViewErrorMessage;
 
     @Override
@@ -38,6 +40,7 @@ public class AddInventoryActivity extends AppCompatActivity {
         editTextQuantity = binding.editTextQuantity;
         textViewErrorMessage = binding.textErrorMessageAdd;
         buttonAdd = binding.buttonAdd;
+        buttonCancel = binding.buttonCancel;
 
         buttonAdd.setOnClickListener(v -> {
             String stringItemName = editTextItemName.getText().toString();
@@ -59,6 +62,27 @@ public class AddInventoryActivity extends AppCompatActivity {
             // launch the Main Activity (if we have a successful login)
             if (additionSuccessful) {
                 Toast.makeText(this,stringItemName + " " + getString(R.string.added_to_inventory), Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        buttonCancel.setOnClickListener(v -> {
+            if (!editTextItemName.getText().toString().isEmpty() || !editTextQuantity.getText().toString().isEmpty()) {
+                // work to lose, so warn the user of the consequences, and get confirmation
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddInventoryActivity.this);
+                builder.setTitle(R.string.discarding_title);
+                builder.setMessage(R.string.cancelling_warning_message);
+                // We are cancelling a cancel, so we need to be careful with the wording
+                builder.setNegativeButton(R.string.continue_editing, (dialog, which) -> {
+                    // will just return to the editing screen
+                });
+                builder.setPositiveButton(R.string.abandon_editing, (dialog, which) -> {
+                    Toast.makeText(AddInventoryActivity.this, R.string.inventory_add_cancelled, Toast.LENGTH_LONG).show();
+                    finish();
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            } else {
                 finish();
             }
         });

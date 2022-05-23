@@ -7,6 +7,7 @@ ASSUMPTIONS
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.junit.Before;
@@ -23,14 +24,21 @@ import static org.junit.Assert.assertEquals;
 public class IntegrationTest_AddInventoryItem {
     private AddInventoryActivity addInventoryActivity;
     private TextView errorMessage;
+    Button buttonCancel;
     Button buttonAdd;
+    EditText editTextItemName;
+    EditText editTextQuantity;
+
 
     @Before
     public void setupLoginActivity() {
         addInventoryActivity = Robolectric.setupActivity(AddInventoryActivity.class);
         errorMessage = addInventoryActivity.findViewById(R.id.textErrorMessageAdd);
+        buttonCancel = addInventoryActivity.findViewById(R.id.buttonCancel);
         buttonAdd = addInventoryActivity.findViewById(R.id.buttonAdd);
-    }
+        editTextItemName = addInventoryActivity.findViewById(R.id.editTextItemName);
+        editTextQuantity = addInventoryActivity.findViewById(R.id.editTextQuantity);
+   }
 
     @Test
     public void checkErrorMessage() {
@@ -41,6 +49,12 @@ public class IntegrationTest_AddInventoryItem {
         // try to add an item with no details entered
         buttonAdd.performClick();
         assertEquals(getErrorMessage(),"Please enter Item Name and Quantity");
+
+        // try to add an item with only the item name entered
+        editTextItemName.setText("Eggs");
+        buttonAdd.performClick();
+        assertEquals(getErrorMessage(),"Please enter Quantity");
+
     }
 
     private String getErrorMessage() {

@@ -25,10 +25,17 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        if (User.getLoggedInUser() != null) { // We shouldn't be here without a logged in user, but just in case
+        User loggedInUser = User.getLoggedInUser();
+        if (loggedInUser != null) { // We shouldn't be here without a logged in user, but just in case
             TextView textViewWelcomeMessage = view.findViewById(R.id.textViewWelcomeMessage);
-            String stringWelcomeMessage = getContext().getString(R.string.welcome_message_header) + " " + User.getLoggedInUser().getUserName();
+
+            // set the welcome message text
+            String stringWelcomeMessage = getContext().getString(R.string.welcome_message_header) + " " + loggedInUser.getUserName();
             textViewWelcomeMessage.setText(stringWelcomeMessage);
+
+            // set the welcome message colour
+            int colourCodeWelcomeMessage = loggedInUser.getColourCode();
+            textViewWelcomeMessage.setTextColor(colourCodeWelcomeMessage);
         }
 
         Button buttonLogout = view.findViewById(R.id.buttonLogout);

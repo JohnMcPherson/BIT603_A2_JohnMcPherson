@@ -108,7 +108,7 @@ public class InventoryItem {
     }
 
     // Make it quicker and less error prone to create a new inventory item
-    // Default visibility hides this function from the ui (and other) packages, so the developer does not create an InventoryItem,
+    // Default visibility hides this function from the ui (and other) packages, so the UI developer does not create an InventoryItem,
     // and (inadvertently) omit adding it to the database.
     static InventoryItem create(String name, double quantity) {
         InventoryItem item = new InventoryItem();

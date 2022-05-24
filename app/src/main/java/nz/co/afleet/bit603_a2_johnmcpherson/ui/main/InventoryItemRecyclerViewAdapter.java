@@ -12,14 +12,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
-import nz.co.afleet.bit603_a2_johnmcpherson.placeholder.PlaceholderContent.PlaceholderItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.databinding.FragmentInventoryBinding;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link PlaceholderItem}.
- * TODO: Replace the implementation with code for your data type.
+ * {@link RecyclerView.Adapter} that can display an {@link InventoryItem}.
  */
 public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<InventoryItemRecyclerViewAdapter.ViewHolder> {
 

@@ -68,6 +68,10 @@ public class InventoryFragment extends Fragment {
         refreshInventoryList();
         // and tell the adapter that the list has changed
         inventoryItemRecyclerViewAdapter.notifyDataSetChanged();
+        // If performance became a problem we could
+        //  -  only update when an inventory item is added (using startActivityForResult, and onActivityResult)
+        //  -  use inventoryItemRecyclerViewAdapter.notifyItemInserted(insertIndex)
+        // performance is not a problem. So, no need to do the above yet
     }
 
     private void refreshInventoryList() {

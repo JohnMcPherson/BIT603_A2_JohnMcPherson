@@ -4,16 +4,13 @@ import android.app.Application;
 
 import androidx.test.core.app.ApplicationProvider;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 
 import java.util.List;
-
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.DaoInventory;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryDatabase;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -23,10 +20,10 @@ import static org.junit.Assert.assertTrue;
 public class IntegrationTestDatabase {
     private Application application;
     InventoryDatabase inventoryDatabase;
-    DaoInventory daoInventory;
 
-    final String SUGAR = "Sugar";
-    final double SUGAR_QUANTITY = 4;
+    private final String SUGAR = "Sugar";
+    private final String SUGAR_QUANTITY_STRING = "4";
+    final double SUGAR_QUANTITY_DOUBLE = 4;
     private final String FLOUR = "Flour";
     private final double FLOUR_QUANTITY = 6.6;
 
@@ -34,16 +31,15 @@ public class IntegrationTestDatabase {
 
     @Before
     public void initialiseApplicationAndDatabase() {
-        Application application = ApplicationProvider.getApplicationContext();
+        application = ApplicationProvider.getApplicationContext();
         inventoryDatabase = InventoryDatabase.getInstance(application);
-        daoInventory = inventoryDatabase.daoInventory();
     }
 
     @Test
     public void testCreateInventoryItem() {
         // test with whole number quantity
-        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY);
-        testInventoryItemContent(sugarInventory, SUGAR, SUGAR_QUANTITY);
+        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY_DOUBLE);
+        testInventoryItemContent(sugarInventory, SUGAR, SUGAR_QUANTITY_DOUBLE);
 
         // and test with decimal number quantity
         InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
@@ -52,18 +48,18 @@ public class IntegrationTestDatabase {
 
     @Test
     public void testAddInventoryItemsToDatabase() {
-        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY);
+        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY_DOUBLE);
         InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
 
         // add items to the database
-        daoInventory.addInventoryItem(sugarInventory);
-        daoInventory.addInventoryItem(flourInventory);
+        getDaoInventory().addInventoryItem(sugarInventory);
+        getDaoInventory().addInventoryItem(flourInventory);
 
-        List<InventoryItem> inventoryItems = daoInventory.getInventoryItems();
+        List<InventoryItem> inventoryItems = getDaoInventory().getInventoryItems();
         // confirm the number of items in the database
         assertEquals(inventoryItems.size(), 2);
         // and the contents
-        testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY);
+        testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY_DOUBLE);
         testInventoryItemContent(inventoryItems.get(1), FLOUR, FLOUR_QUANTITY);
         // note: we are not interested in the ID, which was added for consistency with good database practice
 
@@ -73,8 +69,40 @@ public class IntegrationTestDatabase {
 
     }
 
+    @Test
+    public void testAddInventoryItemsToDatabaseViaInventoryItem() {
+        // confirm that item with junk quantity will not be added to the database
+        InventoryItem.addInventoryItemToDatabase(application, "Item with junk quantity", "Junk quantity");
+        // confirm item not added to database the database
+        List<InventoryItem> inventoryItems = getDaoInventory().getInventoryItems();
+        assertEquals(inventoryItems.size(), 0);
+
+        // confirm that item with negative quantity will not be added to the database
+        InventoryItem.addInventoryItemToDatabase(application, "Item with negative quantity", "-6.0");
+        // confirm item not added to database the database
+        inventoryItems = getDaoInventory().getInventoryItems();
+        assertEquals(inventoryItems.size(), 0);
+
+        // confirm addition of Sugar
+        InventoryItem.addInventoryItemToDatabase(application, SUGAR, SUGAR_QUANTITY_STRING);
+
+        // confirm the number of items in the database
+        inventoryItems = getDaoInventory().getInventoryItems();
+        assertEquals(inventoryItems.size(), 1);
+        // check the contents (including conversion of string to double)
+        testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY_DOUBLE);
+    }
     private void testInventoryItemContent(InventoryItem item, String expectedName, double expectedQuantity) {
         assertEquals(item.getName(), expectedName);
         assertEquals(item.getQuantity(), expectedQuantity, 0);
+    }
+
+    private DaoInventory getDaoInventory() {
+        return inventoryDatabase.daoInventory();
+    }
+
+    @After
+    public void tearDown() {
+        InventoryDatabase.tearDown();
     }
 }

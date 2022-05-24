@@ -56,8 +56,8 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
 
         public ViewHolder(FragmentInventoryBinding binding) {
             super(binding.getRoot());
-            mIdView = binding.itemNumber;
-            mContentView = binding.content;
+            mIdView = binding.itemIdentifier;
+            mContentView = binding.name;
             mQuantity = binding.quantity;
         }
 

@@ -1,6 +1,6 @@
 /*
     COMMENTS
-    -   Change AndroidStudio provided code to use InventoryItem
+    -   Changed AndroidStudio provided code to use InventoryItem
 */
 
 package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
@@ -40,6 +40,7 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
         holder.mItem = inventoryItem;
         holder.mIdView.setText(inventoryItem.getIdString());
         holder.mContentView.setText(inventoryItem.getName());
+        holder.mQuantity.setText(inventoryItem.getStringQuantity());
     }
 
     @Override
@@ -50,12 +51,14 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView mIdView;
         public final TextView mContentView;
+        public final TextView mQuantity;
         public InventoryItem mItem;
 
         public ViewHolder(FragmentInventoryBinding binding) {
             super(binding.getRoot());
             mIdView = binding.itemNumber;
             mContentView = binding.content;
+            mQuantity = binding.quantity;
         }
 
         @Override

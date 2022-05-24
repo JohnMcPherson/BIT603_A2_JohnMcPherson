@@ -130,4 +130,8 @@ public class InventoryItem {
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
+
+    public String getStringQuantity() {
+        return String.valueOf(getQuantity());
+    }
 }

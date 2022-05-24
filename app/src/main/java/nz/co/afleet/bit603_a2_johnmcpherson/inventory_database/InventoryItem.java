@@ -99,7 +99,7 @@ public class InventoryItem {
         // don't allow duplicates. The database doesn't allow duplicates, so this is important to prevent a crash,
         // (in case the UI developer does not check for duplicates)
         // A duplicate will not return any error (from this method), but we have provided isDuplicateOfInventoryItem().
-        // The UI developer is expected to use that, prior to attempting to add inventory to the database
+        // The UI developer is expected to use that method, prior to attempting to add inventory to the database
         if (!isDuplicateOfInventoryItem(application, name)) {
             // if all OK, create and save the InventoryItem
             InventoryItem newInventoryItem = InventoryItem.create(name, doubleQuantity);

@@ -12,10 +12,6 @@ import org.robolectric.RobolectricTestRunner;
 
 import java.util.List;
 
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.DaoInventory;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryDatabase;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -25,8 +21,9 @@ public class IntegrationTestDatabase {
     private Application application;
     InventoryDatabase inventoryDatabase;
 
-    final String SUGAR = "Sugar";
-    final double SUGAR_QUANTITY = 4;
+    private final String SUGAR = "Sugar";
+    private final String SUGAR_QUANTITY_STRING = "4";
+    final double SUGAR_QUANTITY_DOUBLE = 4;
     private final String FLOUR = "Flour";
     private final double FLOUR_QUANTITY = 6.6;
 
@@ -41,8 +38,8 @@ public class IntegrationTestDatabase {
     @Test
     public void testCreateInventoryItem() {
         // test with whole number quantity
-        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY);
-        testInventoryItemContent(sugarInventory, SUGAR, SUGAR_QUANTITY);
+        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY_DOUBLE);
+        testInventoryItemContent(sugarInventory, SUGAR, SUGAR_QUANTITY_DOUBLE);
 
         // and test with decimal number quantity
         InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
@@ -51,7 +48,7 @@ public class IntegrationTestDatabase {
 
     @Test
     public void testAddInventoryItemsToDatabase() {
-        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY);
+        InventoryItem sugarInventory = InventoryItem.create(SUGAR, SUGAR_QUANTITY_DOUBLE);
         InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
 
         // add items to the database
@@ -62,7 +59,7 @@ public class IntegrationTestDatabase {
         // confirm the number of items in the database
         assertEquals(inventoryItems.size(), 2);
         // and the contents
-        testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY);
+        testInventoryItemContent(inventoryItems.get(0), SUGAR, SUGAR_QUANTITY_DOUBLE);
         testInventoryItemContent(inventoryItems.get(1), FLOUR, FLOUR_QUANTITY);
         // note: we are not interested in the ID, which was added for consistency with good database practice
 
@@ -87,9 +84,6 @@ public class IntegrationTestDatabase {
         assertEquals(inventoryItems.size(), 0);
 
         // confirm addition of Sugar
-        String SUGAR = "Sugar";
-        String SUGAR_QUANTITY_STRING = "4";
-        double SUGAR_QUANTITY_DOUBLE = 4;
         InventoryItem.addInventoryItemToDatabase(application, SUGAR, SUGAR_QUANTITY_STRING);
 
         // confirm the number of items in the database

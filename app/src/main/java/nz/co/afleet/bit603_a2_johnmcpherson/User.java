@@ -1,3 +1,10 @@
+/*
+ASSUMPTIONS
+    -   I considered creating a separate data structure for colours. On reflection, it makes sense to keep colourCode as
+        a field within the User class. This would (potentially) allow a user to pick their own shade.
+        For example, Billy likes Blue. With this approach he could pick a code for dark blue, light blue, or another variation.
+*/
+
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
 import android.graphics.Color;
@@ -11,6 +18,8 @@ public class User {
     private int colourCode;
 
     private static User loggedInUser;
+
+    // TODO move colour to a different
 
     // COLOUR_PINK made public in case we want to test it, or access it externally for another reason
     public final static int COLOUR_PINK = 0xFFFF8080;
@@ -93,6 +102,6 @@ public class User {
         return colourCode;
     }
 
-    // setters not required. We initialise directly, and have no requirement to update
-    // setters would be added later if (and when) update is required
+    // Setters not required. We initialise directly, and have no requirement to update.
+    // Setters would be added later if (and when) update is required
 }

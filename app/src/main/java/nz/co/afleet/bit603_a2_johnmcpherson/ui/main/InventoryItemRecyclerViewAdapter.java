@@ -1,4 +1,7 @@
 /*
+    ASSUMPTIONS
+    - The inventory id is not to be displayed
+
     COMMENTS
     -   Changed AndroidStudio provided code to use InventoryItem
 */
@@ -54,6 +57,7 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
         public final TextView mQuantity;
         public InventoryItem mItem;
 
+        // TODO use "text" in naming
         public ViewHolder(FragmentInventoryBinding binding) {
             super(binding.getRoot());
             mIdView = binding.itemIdentifier;

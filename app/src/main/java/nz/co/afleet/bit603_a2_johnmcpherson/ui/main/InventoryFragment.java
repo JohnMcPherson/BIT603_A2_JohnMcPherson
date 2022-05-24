@@ -32,6 +32,8 @@ public class InventoryFragment extends Fragment {
     // TODO Test "Add" button is visible and works
     // TODO Test can scroll list and view items below
     // TODO Change theme to match Kiwi Cookies and Cakes (black)
+    // TODO Inventory should use a HashMap
+
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters

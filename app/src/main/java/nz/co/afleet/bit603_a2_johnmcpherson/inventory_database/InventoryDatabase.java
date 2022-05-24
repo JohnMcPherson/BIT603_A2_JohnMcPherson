@@ -22,5 +22,19 @@ abstract  class InventoryDatabase extends RoomDatabase {
         return instance;
     }
 
+
+    // !!!!! TESTING SUPPORT ONLY !!!!!
+    // The only way (I could find), to get database integration testing to work consistently, was to thoroughly close down the database instance,
+    // at the end of every test.
+    // We can close() it using the publicly available method. But to null the instance variable, the test suite needs additional access. This access is provided below
+    static void tearDown() {
+        if (instance != null) {
+            if (instance.isOpen()) {
+                instance.close();
+                instance = null;
+            }
+        }
+    }
+
     abstract DaoInventory daoInventory();
 }

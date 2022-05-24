@@ -11,7 +11,7 @@ ABOUT InventoryItem
         Activities (and other UI components) should use InventoryItem for all database facing (inventory) services.
         This:
         -   makes it simpler to build UI components
-        -   protects the database from illegal calls (such as adding duplicate items, which would cause a crash)
+        -   protects the database from illegal calls (such as attempting to add a duplicate item, which would cause a crash)
 */
 
 

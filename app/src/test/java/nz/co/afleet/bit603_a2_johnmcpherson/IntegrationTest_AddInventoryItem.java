@@ -19,6 +19,7 @@ import org.robolectric.RobolectricTestRunner;
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntegrationTest_AddInventoryItem {
@@ -67,14 +68,6 @@ public class IntegrationTest_AddInventoryItem {
         buttonAdd.performClick();
         assertEquals(getErrorMessage(),"Please enter Item Name");
     }
-
-    @Test
-    public void checkErrorMessageForAllDetailsEntered() {
-        editTextItemName.setText("Eggs");
-        editTextQuantity.setText("36");
-        buttonAdd.performClick();
-        assertEquals(getErrorMessage(),"");
-     }
 
     private String getErrorMessage() {
         return errorMessage.getText().toString();

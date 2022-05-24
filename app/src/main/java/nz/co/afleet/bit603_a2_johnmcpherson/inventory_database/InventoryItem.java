@@ -76,16 +76,9 @@ public class InventoryItem {
         return String.valueOf(getQuantity());
     }
 
-    // Make it quicker and less error prone to create a new inventory item
-    static InventoryItem create(String name, double quantity) {
-        InventoryItem item = new InventoryItem();
-        item.setName(name);
-        item.setQuantity(quantity);
-        return item;
-    }
-
-
-    // Using a string for quantity, so we can provide a service directly to the UI, without the UI having to know
+    // This is the method that the UI developer should use to create and add to inventory
+    // If (when, for a production app) we added update and delete functionality, we would create appropriate UI facing methods in this class
+    // Uses a string for quantity, so we can provide a service directly to the UI, without the UI developer needing to know
     // how the quantity is stored
     public static void addInventoryItemToDatabase(Application application, String name, String quantity) {
         // initial check on data quality
@@ -103,13 +96,27 @@ public class InventoryItem {
             return;
         }
 
-        // don't allow duplicates
+        // don't allow duplicates. The database doesn't allow duplicates, so this is important to prevent a crash,
+        // (in case the UI developer does not check for duplicates)
+        // A duplicate will not return any error (from this method), but we have provided isDuplicateOfInventoryItem().
+        // The UI developer is expected to use that, prior to attempting to add inventory to the database
         if (!isDuplicateOfInventoryItem(application, name)) {
             // if all OK, create and save the InventoryItem
             InventoryItem newInventoryItem = InventoryItem.create(name, doubleQuantity);
             getDaoInventory(application).addInventoryItem(newInventoryItem);
         }
     }
+
+    // Make it quicker and less error prone to create a new inventory item
+    // Default visibility hides this function from the ui (and other) packages, so the developer does not create an InventoryItem,
+    // and (inadvertently) omit adding it to the database.
+    static InventoryItem create(String name, double quantity) {
+        InventoryItem item = new InventoryItem();
+        item.setName(name);
+        item.setQuantity(quantity);
+        return item;
+    }
+
 
     // provides access to DaoInventory.getInventoryItems(). (All access to Inventory items in the Database to be done through the InventoryItem class)
     public static List<InventoryItem> getInventoryItems(Application application) {

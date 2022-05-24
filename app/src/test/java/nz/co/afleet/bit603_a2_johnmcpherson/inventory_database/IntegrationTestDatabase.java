@@ -23,7 +23,6 @@ import static org.junit.Assert.assertTrue;
 public class IntegrationTestDatabase {
     private Application application;
     InventoryDatabase inventoryDatabase;
-    DaoInventory daoInventory;
 
     final String SUGAR = "Sugar";
     final double SUGAR_QUANTITY = 4;
@@ -34,9 +33,8 @@ public class IntegrationTestDatabase {
 
     @Before
     public void initialiseApplicationAndDatabase() {
-        Application application = ApplicationProvider.getApplicationContext();
+        application = ApplicationProvider.getApplicationContext();
         inventoryDatabase = InventoryDatabase.getInstance(application);
-        daoInventory = inventoryDatabase.daoInventory();
     }
 
     @Test
@@ -56,10 +54,10 @@ public class IntegrationTestDatabase {
         InventoryItem flourInventory = InventoryItem.create(FLOUR, FLOUR_QUANTITY);
 
         // add items to the database
-        daoInventory.addInventoryItem(sugarInventory);
-        daoInventory.addInventoryItem(flourInventory);
+        getDaoInventory().addInventoryItem(sugarInventory);
+        getDaoInventory().addInventoryItem(flourInventory);
 
-        List<InventoryItem> inventoryItems = daoInventory.getInventoryItems();
+        List<InventoryItem> inventoryItems = getDaoInventory().getInventoryItems();
         // confirm the number of items in the database
         assertEquals(inventoryItems.size(), 2);
         // and the contents
@@ -76,5 +74,9 @@ public class IntegrationTestDatabase {
     private void testInventoryItemContent(InventoryItem item, String expectedName, double expectedQuantity) {
         assertEquals(item.getName(), expectedName);
         assertEquals(item.getQuantity(), expectedQuantity, 0);
+    }
+
+    private DaoInventory getDaoInventory() {
+        return inventoryDatabase.daoInventory();
     }
 }

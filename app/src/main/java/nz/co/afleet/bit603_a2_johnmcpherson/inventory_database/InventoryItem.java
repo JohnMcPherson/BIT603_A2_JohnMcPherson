@@ -14,7 +14,6 @@ ABOUT InventoryItem
         -   protects the database from illegal calls (such as attempting to add a duplicate item, which would cause a crash)
 */
 
-
 package nz.co.afleet.bit603_a2_johnmcpherson.inventory_database;
 
 import android.app.Application;
@@ -27,7 +26,7 @@ import androidx.room.PrimaryKey;
 import java.util.List;
 
 // This is a room database entity.
-// Make the Name unique by indexing and annotating as unique. Also enforced at a higher level in the app, to reduce risk of crashes
+// Make the Name unique by indexing and annotating as unique. Also enforced at higher levels in the app, to reduce risk of crashes
 @Entity(indices = {@Index(value = {"Name"},
         unique = true)})
 public class InventoryItem {

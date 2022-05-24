@@ -17,6 +17,19 @@ import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 
 public class AddInventoryActivity extends AppCompatActivity {
 
+    // TODO Move to inventory_item package
+    // TODO Make title bigger
+    // TODO Check big devices and landscape
+    // TODO Test that all elements appear on the screen (UI test)
+    // TODO UI Test for error messages
+    // TODO Test that Add actually adds an item (appears in the list)
+    // TODO Test that cancel button takes straight back to Inventory list (nothing entered)
+    // TODO Test that cancel button pops up dialog
+    // TODO Test that home button takes straight back to Inventory list (nothing entered)
+    // TODO Test that home button pops up dialog
+    // TODO Test that can discard or keep changes
+    // TODO Test that cancel actually cancels
+
     private ActivityAddInventoryBinding binding;
     private EditText editTextItemName;
     private EditText editTextQuantity;

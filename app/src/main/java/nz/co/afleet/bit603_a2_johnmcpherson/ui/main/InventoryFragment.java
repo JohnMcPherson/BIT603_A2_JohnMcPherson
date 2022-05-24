@@ -27,6 +27,11 @@ import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
  */
 public class InventoryFragment extends Fragment {
 
+    // TODO Check for larger devices (including landscape). Consider multiple columns
+    // TODO Test visibility of items in list
+    // TODO Test "Add" button is visible and works
+    // TODO Test can scroll list and view items below
+    // TODO Change theme to match Kiwi Cookies and Cakes (black)
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters

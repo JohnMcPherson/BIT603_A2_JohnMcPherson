@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
@@ -28,6 +31,9 @@ public class InventoryFragment extends Fragment {
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
     private int mColumnCount = 1;
+
+    private final List<InventoryItem> inventoryList = new ArrayList<>();
+    private InventoryItemRecyclerViewAdapter inventoryItemRecyclerViewAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -56,6 +62,20 @@ public class InventoryFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        // refresh the inventory list (that the adapter has access to)
+        refreshInventoryList();
+        // and tell the adapter that the list has changed
+        inventoryItemRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    private void refreshInventoryList() {
+        inventoryList.clear();
+        inventoryList.addAll(InventoryItem.getInventoryItems(requireActivity().getApplication()));
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inventory_list, container, false);
@@ -70,8 +90,10 @@ public class InventoryFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            // changed AndroidStudio provided code to use InventoryItems
-            recyclerView.setAdapter(new InventoryItemRecyclerViewAdapter(InventoryItem.getInventoryItems(getActivity().getApplication())));
+            // create adapter with reference to a list that we will periodically update
+            inventoryItemRecyclerViewAdapter = new InventoryItemRecyclerViewAdapter(inventoryList);
+            // add the adapter to the recycler view
+            recyclerView.setAdapter(inventoryItemRecyclerViewAdapter);
         }
 
         FloatingActionButton buttonAddInventory = view.findViewById(R.id.fabAddInventoryItem);

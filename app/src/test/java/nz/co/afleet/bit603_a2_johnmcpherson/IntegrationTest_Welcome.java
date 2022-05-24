@@ -6,6 +6,7 @@ ASSUMPTIONS
 
 package nz.co.afleet.bit603_a2_johnmcpherson;
 
+import android.graphics.Color;
 import android.widget.TextView;
 
 import org.junit.Before;
@@ -22,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 public class IntegrationTest_Welcome {
-    public static final String WELCOME = "Welcome";
+    private static final String WELCOME = "Welcome";
 
     private MainActivity mainActivity;
     private TextView welcomeMessage;
@@ -39,5 +40,9 @@ public class IntegrationTest_Welcome {
         String expectedMessage = WELCOME + " " + TRINI;
         String actualMessage = welcomeMessage.getText().toString();
         assertEquals(expectedMessage, actualMessage);
+        //confirm the colour of the welcome message
+        int actualMessageColor = welcomeMessage.getCurrentTextColor();
+        int TRINI_COLOUR_CODE = Color.YELLOW;
+        assertEquals(actualMessageColor, TRINI_COLOUR_CODE);
     }
 }

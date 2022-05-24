@@ -17,6 +17,7 @@ import org.robolectric.RobolectricTestRunner;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.main.MainActivity;
 
+import static java.lang.Thread.sleep;
 import static nz.co.afleet.bit603_a2_johnmcpherson.UnitTest_User_And_Login.TRINI;
 import static nz.co.afleet.bit603_a2_johnmcpherson.UnitTest_User_And_Login.TRINI_PASSWORD;
 import static org.junit.Assert.assertEquals;
@@ -32,6 +33,12 @@ public class IntegrationTest_Welcome {
     public void setupLoginActivity() {
         User.loginUser(TRINI, TRINI_PASSWORD);
         mainActivity = Robolectric.setupActivity(MainActivity.class);
+        try {
+            // delay to allow time for inventory list to display
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         welcomeMessage = mainActivity.findViewById(R.id.textViewWelcomeMessage);
     }
 

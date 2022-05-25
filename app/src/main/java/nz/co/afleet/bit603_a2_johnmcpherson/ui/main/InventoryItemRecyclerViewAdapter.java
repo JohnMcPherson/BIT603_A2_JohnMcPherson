@@ -25,9 +25,6 @@ import java.util.LinkedHashMap;
  */
 public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<InventoryItemRecyclerViewAdapter.ViewHolder> {
 
-    // TODO use iterator with LinkedHashMap
-    // TODO remove the id view
-
     // Using LinkedHashMap because we can get a more reliable definition of entry positions than HashMap. [onBindViewHolder() uses position]
     private final LinkedHashMap<String, Double> inventoryHashMap;
 
@@ -62,15 +59,13 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final TextView mIdView;
-        public final TextView mContentView;
+         public final TextView mContentView;
         public final TextView mQuantity;
         public InventoryItem mItem;
 
         // TODO use "text" in naming
         public ViewHolder(FragmentInventoryBinding binding) {
             super(binding.getRoot());
-            mIdView = binding.itemIdentifier;
             mContentView = binding.name;
             mQuantity = binding.quantity;
         }

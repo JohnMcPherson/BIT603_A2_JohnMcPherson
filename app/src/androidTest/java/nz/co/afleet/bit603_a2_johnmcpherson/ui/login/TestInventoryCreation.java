@@ -39,8 +39,6 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4.class)
 public class TestInventoryCreation {
 
-    // TODO add an @After to clear the database
-
     @Rule
     public ActivityScenarioRule<LoginActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(LoginActivity.class);
@@ -580,31 +578,31 @@ public class TestInventoryCreation {
         }
 
         ViewInteraction textView8 = onView(
-                allOf(withId(R.id.name), withText("Sugar"),
+                allOf(withId(R.id.textName), withText("Sugar"),
                         withParent(withParent(withId(R.id.list))),
                         isDisplayed()));
         textView8.check(matches(withText("Sugar")));
 
         ViewInteraction textView9 = onView(
-                allOf(withId(R.id.quantity), withText("10.0"),
+                allOf(withId(R.id.textQuantity), withText("10.0"),
                         withParent(withParent(withId(R.id.list))),
                         isDisplayed()));
         textView9.check(matches(withText("10.0")));
 
         ViewInteraction textView10 = onView(
-                allOf(withId(R.id.name), withText("Icing Sugar"),
+                allOf(withId(R.id.textName), withText("Icing Sugar"),
                         withParent(withParent(withId(R.id.list))),
                         isDisplayed()));
         textView10.check(matches(withText("Icing Sugar")));
 
         ViewInteraction textView11 = onView(
-                allOf(withId(R.id.quantity), withText("20.0"),
+                allOf(withId(R.id.textQuantity), withText("20.0"),
                         withParent(withParent(withId(R.id.list))),
                         isDisplayed()));
         textView11.check(matches(withText("20.0")));
 
         ViewInteraction textView12 = onView(
-                allOf(withId(R.id.quantity), withText("20.0"),
+                allOf(withId(R.id.textQuantity), withText("20.0"),
                         withParent(withParent(withId(R.id.list))),
                         isDisplayed()));
         textView12.check(matches(withText("20.0")));

@@ -29,12 +29,9 @@ import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
  */
 public class InventoryFragment extends Fragment {
 
-    // TODO Clear data at beginning of test
     // TODO Check for larger devices (including landscape). Consider multiple columns
-    // TODO Remove Id from display
     // TODO Test can scroll list and view items below
     // TODO Change theme to match Kiwi Cookies and Cakes (black)
-    // TODO Inventory should use a HashMap
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";

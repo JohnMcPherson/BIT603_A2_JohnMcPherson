@@ -22,6 +22,7 @@ public class AddInventoryActivity extends AppCompatActivity {
     // TODO Move to inventory_item package
     // TODO Make title bigger
     // TODO Check big devices and landscape
+    // TODO move fields to local variables
 
     private ActivityAddInventoryBinding binding;
     private EditText editTextItemName;

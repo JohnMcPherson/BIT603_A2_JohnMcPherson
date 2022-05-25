@@ -16,7 +16,7 @@
             android:name=".ui.main.MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"
-            android:theme="@style/Theme.BIT603_A2_JohnMcPherson.NoActionBar" />
+            android:theme="@style/Theme.BIT603_A2_JohnMcPherson" />
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true">

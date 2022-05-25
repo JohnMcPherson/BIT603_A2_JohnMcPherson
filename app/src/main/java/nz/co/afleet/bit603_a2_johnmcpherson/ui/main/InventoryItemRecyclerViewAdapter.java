@@ -17,7 +17,6 @@ import android.widget.TextView;
 import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.databinding.FragmentInventoryBinding;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 /**

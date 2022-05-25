@@ -66,8 +66,8 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
         // TODO use "text" in naming
         public ViewHolder(FragmentInventoryBinding binding) {
             super(binding.getRoot());
-            mContentView = binding.name;
-            mQuantity = binding.quantity;
+            mContentView = binding.textName;
+            mQuantity = binding.textQuantity;
         }
 
         @Override

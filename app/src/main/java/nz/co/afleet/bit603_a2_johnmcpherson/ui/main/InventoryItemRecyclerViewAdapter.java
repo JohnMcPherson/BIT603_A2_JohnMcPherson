@@ -25,6 +25,8 @@ import java.util.LinkedHashMap;
  */
 public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<InventoryItemRecyclerViewAdapter.ViewHolder> {
 
+    // TODO use iterator with LinkedHashMap
+
     // Using LinkedHashMap because it has a more reliable definition of position than HashMap. [onBindViewHolder() uses position]
     private final LinkedHashMap<String, Double> inventoryHashMap;
 

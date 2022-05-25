@@ -27,6 +27,7 @@ import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
  */
 public class InventoryFragment extends Fragment {
 
+    // TODO Clear data at beginning of test
     // TODO Check for larger devices (including landscape). Consider multiple columns
     // TODO Test visibility of items in list
     // TODO Test "Add" button is visible and works

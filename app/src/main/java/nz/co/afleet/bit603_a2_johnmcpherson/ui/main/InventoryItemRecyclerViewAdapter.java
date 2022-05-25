@@ -28,7 +28,7 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
     // TODO use iterator with LinkedHashMap
     // TODO remove the id view
 
-    // Using LinkedHashMap because it has a more reliable definition of position than HashMap. [onBindViewHolder() uses position]
+    // Using LinkedHashMap because we can get a more reliable definition of entry positions than HashMap. [onBindViewHolder() uses position]
     private final LinkedHashMap<String, Double> inventoryHashMap;
 
     public InventoryItemRecyclerViewAdapter(LinkedHashMap<String, Double> items) {
@@ -45,8 +45,10 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Object key = inventoryHashMap.keySet().toArray()[position];
-        if (key.getClass() == String.class) { // protect from crash
-            String itemName = (String) key; // now we are sure we got a String, as expected
+        // test for String before casting to String, to protect from a crash in the case of incorrect usage
+        if (key.getClass() == String.class) {
+            String itemName = (String) key;
+
             Double doubleQuantity = inventoryHashMap.get(key);
             String stringValue = String.valueOf(doubleQuantity);
             holder.mContentView.setText(itemName);

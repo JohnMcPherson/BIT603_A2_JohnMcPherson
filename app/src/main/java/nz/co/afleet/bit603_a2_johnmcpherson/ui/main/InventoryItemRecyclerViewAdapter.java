@@ -17,17 +17,19 @@ import android.widget.TextView;
 import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.databinding.FragmentInventoryBinding;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * {@link RecyclerView.Adapter} that can display an {@link InventoryItem}.
  */
 public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<InventoryItemRecyclerViewAdapter.ViewHolder> {
 
-    private final List<InventoryItem> mValues;
+    // Using LinkedHashMap because it has a more reliable definition of position than HashMap. [onBindViewHolder() uses position]
+    private final LinkedHashMap<String, Double> inventoryHashMap;
 
-    public InventoryItemRecyclerViewAdapter(List<InventoryItem> items) {
-        mValues = items;
+    public InventoryItemRecyclerViewAdapter(LinkedHashMap<String, Double> items) {
+        inventoryHashMap = items;
     }
 
     @Override
@@ -39,16 +41,19 @@ public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<Inven
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        InventoryItem inventoryItem = mValues.get(position);
-        holder.mItem = inventoryItem;
-        holder.mIdView.setText(inventoryItem.getIdString());
-        holder.mContentView.setText(inventoryItem.getName());
-        holder.mQuantity.setText(inventoryItem.getStringQuantity());
+        Object key = inventoryHashMap.keySet().toArray()[position];
+        if (key.getClass() == String.class) { // protect from crash
+            String itemName = (String) key; // now we are sure we got a String, as expected
+            Double doubleQuantity = inventoryHashMap.get(key);
+            String stringValue = String.valueOf(doubleQuantity);
+            holder.mContentView.setText(itemName);
+            holder.mQuantity.setText(stringValue);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return inventoryHashMap.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

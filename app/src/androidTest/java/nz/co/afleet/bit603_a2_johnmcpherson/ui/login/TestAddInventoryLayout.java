@@ -26,6 +26,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
+import static androidx.test.espresso.matcher.ViewMatchers.withHint;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -139,10 +140,11 @@ public class TestAddInventoryLayout {
         textView2.check(matches(withText("Item Name")));
 
         ViewInteraction editText = onView(
-                allOf(withId(R.id.editTextItemName), withText("Required"),
+                // Manual change to account for the hint text
+                allOf(withId(R.id.editTextItemName), withHint("Required"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        editText.check(matches(withText("Required")));
+        editText.check(matches(withHint("Required")));
 
         ViewInteraction textView3 = onView(
                 allOf(withId(R.id.textQuantityLabel), withText("Quantity"),
@@ -151,10 +153,11 @@ public class TestAddInventoryLayout {
         textView3.check(matches(withText("Quantity")));
 
         ViewInteraction editText2 = onView(
-                allOf(withId(R.id.editTextQuantity), withText("Required"),
+                // Manual change to account for the hint text
+                allOf(withId(R.id.editTextQuantity), withHint("Required"),
                         withParent(withParent(withId(android.R.id.content))),
                         isDisplayed()));
-        editText2.check(matches(withText("Required")));
+        editText2.check(matches(withHint("Required")));
     }
 
     private static Matcher<View> childAtPosition(

@@ -23,6 +23,7 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import java.util.HashMap;
 import java.util.List;
 
 // This is a room database entity.
@@ -118,10 +119,15 @@ public class InventoryItem {
 
 
     // provides access to DaoInventory.getInventoryItems(). (All access to Inventory items in the Database to be done through the InventoryItem class)
-    public static List<InventoryItem> getInventoryItems(Application application) {
+    public static HashMap<String, Double> getInventoryItems(Application application) {
         InventoryDatabase inventoryDatabase = InventoryDatabase.getInstance(application);
         DaoInventory daoInventory = inventoryDatabase.daoInventory();
-        return daoInventory.getInventoryItems();
+        List<InventoryItem> inventoryItems = daoInventory.getInventoryItems();
+        HashMap<String, Double> returnMap = new HashMap<>();
+        for (InventoryItem inventoryItem : inventoryItems) {
+            returnMap.put(inventoryItem.getName(), inventoryItem.getQuantity());
+        }
+        return returnMap;
     }
 
     private static DaoInventory getDaoInventory(Application application) {

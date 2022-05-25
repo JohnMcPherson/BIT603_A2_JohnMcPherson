@@ -146,4 +146,11 @@ public class InventoryItem {
         }
         return false;
     }
+
+    /*
+        The name says it. Only use for testing, or if you are SURE you want to clear the databse!
+    */
+    public static void FOR_TEST_USE_ONLY_deleteAllInventoryItems(Application application) {
+        getDaoInventory(application).FOR_TEST_USE_ONLY_deleteAllInventoryItems();
+    }
 }

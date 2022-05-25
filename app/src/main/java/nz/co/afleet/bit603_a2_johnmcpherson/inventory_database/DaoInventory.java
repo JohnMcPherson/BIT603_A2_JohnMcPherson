@@ -14,4 +14,7 @@ interface DaoInventory {
 
     @Query("SELECT * FROM InventoryItem")
     List<InventoryItem> getInventoryItems();
+
+    @Query ("DELETE FROM InventoryItem")
+    public void FOR_TEST_USE_ONLY_deleteAllInventoryItems();
 }

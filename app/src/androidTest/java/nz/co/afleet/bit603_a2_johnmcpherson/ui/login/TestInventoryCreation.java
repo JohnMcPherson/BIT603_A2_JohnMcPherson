@@ -1,6 +1,7 @@
 package nz.co.afleet.bit603_a2_johnmcpherson.ui.login;
 
 
+import android.app.Application;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -13,11 +14,13 @@ import androidx.test.filters.LargeTest;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -41,6 +44,15 @@ public class TestInventoryCreation {
     @Rule
     public ActivityScenarioRule<LoginActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(LoginActivity.class);
+
+    @Before
+    public void clearDatabase() {
+        // Clear the InventoryItem table before the test (otherwise duplicate items may break the test)
+        mActivityScenarioRule.getScenario().onActivity(activity -> {
+            Application application = activity.getApplication();
+            InventoryItem.FOR_TEST_USE_ONLY_deleteAllInventoryItems(application);
+        });
+    }
 
     @Test
     public void testInventoryCreation() {

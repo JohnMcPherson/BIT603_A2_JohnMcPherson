@@ -1,3 +1,10 @@
+/*
+IMPORTANT
+    -   Use portrait orientation for testing.
+        Landscape (on Nexus 5X) does not display the same way.
+        But, manual testing indicates the functionality still works in landscape
+*/
+
 package nz.co.afleet.bit603_a2_johnmcpherson.ui.login;
 
 
@@ -18,6 +25,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.login.LoginActivity;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -33,7 +41,7 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginWithCorrectErrorMessages {
+public class LoginWithCorrectErrorMessages_USE_PORTRAIT_FOR_TESTING {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);

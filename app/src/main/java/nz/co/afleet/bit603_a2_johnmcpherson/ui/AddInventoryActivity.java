@@ -17,21 +17,24 @@ import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 
 public class AddInventoryActivity extends AppCompatActivity {
 
-    private ActivityAddInventoryBinding binding;
+    // TODO Add information to the wireframe (e.g. error messages and cancel dialogs)
+
+    // TODO Move to inventory_item package
+    // TODO Make title bigger
+    // TODO Check big devices and landscape
+
     private EditText editTextItemName;
     private EditText editTextQuantity;
-    private Button buttonAdd;
-    private Button buttonCancel;
     private TextView textViewErrorMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // use View Binding to set the root view
-        binding = ActivityAddInventoryBinding.inflate(getLayoutInflater());
+        ActivityAddInventoryBinding binding = ActivityAddInventoryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // show the "Home" menu item (to return us to the calling screen)
+        // show the "Home" menu item (to return user to the calling screen)
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
@@ -39,8 +42,8 @@ public class AddInventoryActivity extends AppCompatActivity {
         editTextItemName = binding.editTextItemName;
         editTextQuantity = binding.editTextQuantity;
         textViewErrorMessage = binding.textErrorMessageAdd;
-        buttonAdd = binding.buttonAdd;
-        buttonCancel = binding.buttonCancel;
+        Button buttonAdd = binding.buttonAdd;
+        Button buttonCancel = binding.buttonCancel;
 
         buttonAdd.setOnClickListener(v -> {
             String stringItemName = editTextItemName.getText().toString();

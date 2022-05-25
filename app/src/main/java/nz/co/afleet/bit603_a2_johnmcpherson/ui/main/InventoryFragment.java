@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
@@ -27,12 +29,14 @@ import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
  */
 public class InventoryFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
+    // TODO Check for larger devices (including landscape). Consider multiple columns
+    // TODO Test can scroll list and view items below
+    // TODO Change theme to match Kiwi Cookies and Cakes (black)
+
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private final List<InventoryItem> inventoryList = new ArrayList<>();
+    private final LinkedHashMap<String, Double> inventoryMap = new LinkedHashMap<>();
     private InventoryItemRecyclerViewAdapter inventoryItemRecyclerViewAdapter;
 
     /**
@@ -42,7 +46,7 @@ public class InventoryFragment extends Fragment {
     public InventoryFragment() {
     }
 
-    // TODO: Customize parameter initialization
+    // TODO: Customize parameter initialization (IGNORE for now)
     @SuppressWarnings("unused")
     public static InventoryFragment newInstance(int columnCount) {
         InventoryFragment fragment = new InventoryFragment();
@@ -75,8 +79,10 @@ public class InventoryFragment extends Fragment {
     }
 
     private void refreshInventoryList() {
-        inventoryList.clear();
-        inventoryList.addAll(InventoryItem.getInventoryItems(requireActivity().getApplication()));
+        inventoryMap.clear();
+        HashMap<String, Double> inventoryHashMap = InventoryItem.getInventoryItems(requireActivity().getApplication());
+        inventoryMap.putAll(inventoryHashMap);
+        // we can't directly use inventoryHashMap. inventoryMap is directly pointed to by the InventoryItemRecyclerViewAdapter
     }
 
     @Override
@@ -95,7 +101,7 @@ public class InventoryFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             // create adapter with reference to a list that we will periodically update
-            inventoryItemRecyclerViewAdapter = new InventoryItemRecyclerViewAdapter(inventoryList);
+            inventoryItemRecyclerViewAdapter = new InventoryItemRecyclerViewAdapter(inventoryMap);
             // add the adapter to the recycler view
             recyclerView.setAdapter(inventoryItemRecyclerViewAdapter);
         }

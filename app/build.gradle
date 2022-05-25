@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "nz.co.afleet.bit603_a2_johnmcpherson"
-        minSdk 16
+        minSdk 19
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -34,7 +34,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-    namespace 'nz.co.afleet.bit603_a2_johnmcpherson'
 }
 
 dependencies {

@@ -33,9 +33,7 @@ public class InventoryFragment extends Fragment {
     // TODO Test can scroll list and view items below
     // TODO Change theme to match Kiwi Cookies and Cakes (black)
 
-    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    // TODO: Customize parameters
     private int mColumnCount = 1;
 
     private final LinkedHashMap<String, Double> inventoryMap = new LinkedHashMap<>();
@@ -48,7 +46,7 @@ public class InventoryFragment extends Fragment {
     public InventoryFragment() {
     }
 
-    // TODO: Customize parameter initialization
+    // TODO: Customize parameter initialization (IGNORE for now)
     @SuppressWarnings("unused")
     public static InventoryFragment newInstance(int columnCount) {
         InventoryFragment fragment = new InventoryFragment();

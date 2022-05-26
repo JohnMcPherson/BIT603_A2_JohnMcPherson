@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson.ui.login;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 
 import android.app.Application;
@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.login.LoginActivity;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;

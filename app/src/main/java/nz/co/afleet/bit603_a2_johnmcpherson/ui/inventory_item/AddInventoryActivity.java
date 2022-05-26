@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson.ui;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.inventory_item;
 
 import android.os.Bundle;
 import android.view.MenuItem;

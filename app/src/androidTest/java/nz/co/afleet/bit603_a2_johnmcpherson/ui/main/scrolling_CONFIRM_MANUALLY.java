@@ -31,7 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.login.LoginActivity;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -39,7 +39,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
@@ -49,7 +48,7 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class Test20ItemsVisibility_REOPEN_AND_CHECK_AFTER_TEST {
+public class scrolling_CONFIRM_MANUALLY {
 
     @Rule
     public ActivityScenarioRule<LoginActivity> mActivityScenarioRule =

@@ -14,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.databinding.FragmentInventoryBinding;
 
 import java.util.LinkedHashMap;
@@ -22,12 +22,12 @@ import java.util.LinkedHashMap;
 /**
  * {@link RecyclerView.Adapter} that can display an {@link InventoryItem}.
  */
-public class InventoryItemRecyclerViewAdapter extends RecyclerView.Adapter<InventoryItemRecyclerViewAdapter.ViewHolder> {
+public class InventoryRecyclerViewAdapter extends RecyclerView.Adapter<InventoryRecyclerViewAdapter.ViewHolder> {
 
     // Using LinkedHashMap because we can get a more reliable definition of entry positions than HashMap. [onBindViewHolder() uses position]
     private final LinkedHashMap<String, Double> inventoryHashMap;
 
-    public InventoryItemRecyclerViewAdapter(LinkedHashMap<String, Double> items) {
+    public InventoryRecyclerViewAdapter(LinkedHashMap<String, Double> items) {
         inventoryHashMap = items;
     }
 

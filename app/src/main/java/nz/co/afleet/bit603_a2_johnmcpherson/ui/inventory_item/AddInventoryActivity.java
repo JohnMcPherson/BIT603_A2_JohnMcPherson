@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.databinding.ActivityAddInventoryBinding;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory.InventoryItem;
 
 public class AddInventoryActivity extends AppCompatActivity {
 

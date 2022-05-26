@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.inventory_item.AddInventoryActivity;
 
 /**
@@ -31,7 +31,7 @@ public class InventoryFragment extends Fragment {
     private int mColumnCount = 1;
 
     private final LinkedHashMap<String, Double> inventoryMap = new LinkedHashMap<>();
-    private InventoryItemRecyclerViewAdapter inventoryItemRecyclerViewAdapter;
+    private InventoryRecyclerViewAdapter inventoryItemRecyclerViewAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -95,7 +95,7 @@ public class InventoryFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
             // create adapter with reference to a list that we will periodically update
-            inventoryItemRecyclerViewAdapter = new InventoryItemRecyclerViewAdapter(inventoryMap);
+            inventoryItemRecyclerViewAdapter = new InventoryRecyclerViewAdapter(inventoryMap);
             // add the adapter to the recycler view
             recyclerView.setAdapter(inventoryItemRecyclerViewAdapter);
         }

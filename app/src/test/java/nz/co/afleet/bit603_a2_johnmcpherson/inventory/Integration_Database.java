@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson.inventory_database;
+package nz.co.afleet.bit603_a2_johnmcpherson.inventory;
 
 import android.app.Application;
 
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
-public class IntegrationTestDatabase {
+public class Integration_Database {
     private Application application;
     InventoryDatabase inventoryDatabase;
 

@@ -1,7 +1,7 @@
 
 
 
-package nz.co.afleet.bit603_a2_johnmcpherson.inventory_database;
+package nz.co.afleet.bit603_a2_johnmcpherson.inventory;
 
 import android.content.Context;
 

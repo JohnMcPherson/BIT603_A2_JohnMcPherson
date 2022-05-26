@@ -20,7 +20,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
-import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
+import nz.co.afleet.bit603_a2_johnmcpherson.inventory.InventoryItem;
 import nz.co.afleet.bit603_a2_johnmcpherson.ui.login.LoginActivity;
 
 import static androidx.test.espresso.Espresso.onView;

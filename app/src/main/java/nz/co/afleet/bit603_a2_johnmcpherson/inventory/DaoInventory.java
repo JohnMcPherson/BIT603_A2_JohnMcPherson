@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson.inventory_database;
+package nz.co.afleet.bit603_a2_johnmcpherson.inventory;
 
 import androidx.room.Insert;
 import androidx.room.Query;

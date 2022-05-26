@@ -41,7 +41,7 @@ import static org.hamcrest.Matchers.allOf;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class LoginWithCorrectErrorMessages_USE_PORTRAIT_FOR_TESTING {
+public class LoginMessages_PORTRAIT {
 
     @Rule
     public ActivityTestRule<LoginActivity> mActivityTestRule = new ActivityTestRule<>(LoginActivity.class);

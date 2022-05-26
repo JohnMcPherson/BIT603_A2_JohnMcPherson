@@ -14,7 +14,7 @@ ABOUT InventoryItem
         -   protects the database from illegal calls (such as attempting to add a duplicate item, which would cause a crash)
 */
 
-package nz.co.afleet.bit603_a2_johnmcpherson.inventory_database;
+package nz.co.afleet.bit603_a2_johnmcpherson.inventory;
 
 import android.app.Application;
 

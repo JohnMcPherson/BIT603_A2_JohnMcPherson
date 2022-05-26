@@ -19,8 +19,7 @@ import nz.co.afleet.bit603_a2_johnmcpherson.ui.login.LoginActivity;
 
 // getString() has a warning, with root cause that getContext() is nullable. I assumed (and tested) that the context is known by the time
 // onCreateView() is called
-// TODO Make Welcome bigger
-// TODO check for larger devices
+
 @SuppressWarnings("ConstantConditions")
 public class HomeFragment extends Fragment {
     @Nullable

@@ -1,4 +1,4 @@
-package nz.co.afleet.bit603_a2_johnmcpherson.ui;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.inventory_item;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -18,8 +18,6 @@ import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
 public class AddInventoryActivity extends AppCompatActivity {
 
     // TODO Add information to the wireframe (e.g. error messages and cancel dialogs)
-
-    // TODO Move to inventory_item package
 
     private EditText editTextItemName;
     private EditText editTextQuantity;

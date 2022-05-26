@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.inventory_item.AddInventoryActivity;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

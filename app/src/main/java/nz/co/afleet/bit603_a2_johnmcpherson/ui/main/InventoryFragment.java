@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
 
 import nz.co.afleet.bit603_a2_johnmcpherson.R;
 import nz.co.afleet.bit603_a2_johnmcpherson.inventory_database.InventoryItem;
-import nz.co.afleet.bit603_a2_johnmcpherson.ui.AddInventoryActivity;
+import nz.co.afleet.bit603_a2_johnmcpherson.ui.inventory_item.AddInventoryActivity;
 
 /**
  * A fragment representing a list of Items.

@@ -1,6 +1,6 @@
 /*
 HOW TO TEST
-   - Run the test
+   - Run the test (in PORTRAIT)
    - reopen the app
    - login
    - inventory
@@ -9,7 +9,7 @@ HOW TO TEST
    (Espresso does not automate ability to scroll and check. We would have to write that code ourselves)
 */
 
-package nz.co.afleet.bit603_a2_johnmcpherson.ui.login;
+package nz.co.afleet.bit603_a2_johnmcpherson.ui.main;
 
 
 import android.app.Application;

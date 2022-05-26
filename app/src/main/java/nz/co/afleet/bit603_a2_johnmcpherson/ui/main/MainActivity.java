@@ -29,6 +29,8 @@ import nz.co.afleet.bit603_a2_johnmcpherson.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    // TODO fix display of MainActivity on ActionBar (changing of themes mucked this up)
+
     private ActivityMainBinding binding;
 
     @Override

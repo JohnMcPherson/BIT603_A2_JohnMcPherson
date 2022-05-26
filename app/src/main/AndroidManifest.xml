@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BIT603_A2_JohnMcPherson">
         <activity
-            android:name=".ui.AddInventoryActivity"
+            android:name=".ui.inventory_item.AddInventoryActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"

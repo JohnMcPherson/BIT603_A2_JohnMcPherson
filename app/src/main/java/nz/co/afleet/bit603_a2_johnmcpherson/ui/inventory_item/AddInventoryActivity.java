@@ -19,8 +19,6 @@ public class AddInventoryActivity extends AppCompatActivity {
 
     // TODO Add information to the wireframe (e.g. error messages and cancel dialogs)
 
-    // TODO Move to inventory_item package
-
     private EditText editTextItemName;
     private EditText editTextQuantity;
     private TextView textViewErrorMessage;

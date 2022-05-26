@@ -55,7 +55,7 @@
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textQuantityLabel"
+        app:layout_constraintStart_toEndOf="@id/barrierVertical"
         app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
 
     <TextView
@@ -84,17 +84,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
         android:text="@string/inventory_quantity_label"
         app:layout_constraintBaseline_toBaselineOf="@+id/editTextQuantity"
-        app:layout_constraintStart_toStartOf="@id/barrierVertical" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrierVertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="right"
-        app:constraint_referenced_ids="textItemNameLabel, textQuantityLabel" />
+        app:constraint_referenced_ids="mandatoryItemName, mandatoryQuantity" />
 
     <TextView
         android:id="@+id/textErrorMessageAdd"
@@ -110,5 +109,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextQuantity" />
+
+    <TextView
+        android:id="@+id/mandatoryItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/mandatory_and_error_indicator"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextItemName"
+        app:layout_constraintStart_toEndOf="@+id/textItemNameLabel" />
+
+    <TextView
+        android:id="@+id/mandatoryQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@color/mandatory_and_error_indicator"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextQuantity"
+        app:layout_constraintStart_toEndOf="@+id/textQuantityLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

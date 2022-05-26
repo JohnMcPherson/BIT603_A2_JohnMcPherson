@@ -20,8 +20,6 @@ public class AddInventoryActivity extends AppCompatActivity {
     // TODO Add information to the wireframe (e.g. error messages and cancel dialogs)
 
     // TODO Move to inventory_item package
-    // TODO Make title bigger
-    // TODO Check big devices and landscape
 
     private EditText editTextItemName;
     private EditText editTextQuantity;
